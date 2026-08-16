@@ -1,0 +1,40 @@
+# Environment variables
+.env
+*.env.local
+
+# Node modules & build outputs
+node_modules/
+client/node_modules/
+client/dist/
+client/build/
+.vite/
+
+# Python & virtual environment
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+server/__pycache__/
+server/app/__pycache__/
+server/app/*/__pycache__/
+
+# ChromaDB Data Storage (keep directory structure if needed, exclude vector binary files if large)
+server/chroma_data/
+chroma_data/
+
+# Uploads
+server/uploads/*
+!server/uploads/.gitkeep
+
+# ML Models & Datasets
+server/ml/model/*.pkl
+server/ml/model/*.joblib
+
+# System logs & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
