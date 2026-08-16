@@ -4,30 +4,30 @@ import { Star, Quote, Award, Building2 } from 'lucide-react';
 export const Testimonials: React.FC = () => {
   const reviews = [
     {
-      name: 'Aarav Sharma',
-      university: 'IIT Bombay',
-      degree: 'B.Tech Computer Science',
-      company: 'Placed at Microsoft',
+      name: 'Alex Rivera (Demo Persona)',
+      university: 'Computer Science Graduate',
+      degree: 'B.S. Software Engineering',
+      company: 'Goal: Backend Development',
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
-      comment: 'CampusMate AI raised my resume ATS score from 62% to 94%. The AI mock interview coach asked exact technical questions I encountered in my final round!',
+      comment: 'CampusMate AI raised my sample resume ATS keyword score from 62% to 94%. The AI mock interview coach provided instant feedback on my technical answer structure.',
       rating: 5
     },
     {
-      name: 'Sophia Patel',
-      university: 'Stanford University',
+      name: 'Sophia Chen (Demo Persona)',
+      university: 'AI & Data Science Student',
       degree: 'M.S. Artificial Intelligence',
-      company: 'Placed at Google',
+      company: 'Goal: Machine Learning Engineer',
       avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80',
-      comment: 'The Random Forest job matcher showed me exactly which skills I was missing for Senior AI roles. The LangGraph agent helped me tailor cover letters in seconds.',
+      comment: 'The Random Forest job matcher highlighted exact missing technical skills for AI roles, and the LangGraph agent assisted with tailoring project descriptions.',
       rating: 5
     },
     {
-      name: 'Rohan Gupta',
-      university: 'BITS Pilani',
-      degree: 'B.E. Information Systems',
-      company: 'Placed at Amazon',
+      name: 'Jordan Lee (Demo Persona)',
+      university: 'Information Systems Senior',
+      degree: 'B.S. Information Systems',
+      company: 'Goal: Full Stack Engineer',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
-      comment: 'The Kanban Application Tracker kept me sane while applying to 50+ campus placement drives. Clean UI, super fast backend, and 100% accurate feedback.',
+      comment: 'The visual Kanban Application Tracker organized all my job applications into clean drag-and-drop columns. The fast backend and clear dashboard make career prep seamless.',
       rating: 5
     }
   ];
@@ -40,13 +40,13 @@ export const Testimonials: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
             <Award className="w-3.5 h-3.5" />
-            <span>Proven Student Success</span>
+            <span>Interactive Demo Scenarios</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            Loved by Students Across <span className="gradient-text">Top Universities</span>
+            Designed for <span className="gradient-text">Student Career Growth</span>
           </h2>
           <p className="text-base sm:text-lg text-slate-400 leading-relaxed font-normal">
-            See how CampusMate AI helped engineering and science students land top-tier tech roles.
+            Sample user feedback scenarios illustrating how CampusMate AI assists job seekers in placement drives (Demo Examples).
           </p>
         </div>
 

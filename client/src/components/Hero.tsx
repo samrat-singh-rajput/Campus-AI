@@ -97,7 +97,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAuth }) => {
                   </div>
                 </div>
                 <span className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs px-3 py-1 rounded-full font-bold">
-                  94% Match
+                  Demo Score: 94%
                 </span>
               </div>
 
@@ -107,7 +107,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAuth }) => {
                 {/* Score Progress Bar */}
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs font-semibold">
-                    <span className="text-slate-300">ATS Keyword Optimization</span>
+                    <span className="text-slate-300">Sample ATS Keyword Match</span>
                     <span className="text-emerald-400">94 / 100</span>
                   </div>
                   <div className="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800">
@@ -137,7 +137,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAuth }) => {
                     <Bot className="w-4 h-4 text-purple-400" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-slate-200">AI Coach Advice</p>
+                    <p className="text-xs font-bold text-slate-200">AI Coach Advice (Demo Output)</p>
                     <p className="text-xs text-slate-400 mt-1 leading-relaxed">
                       "Strong backend alignment! Add 1 project demonstrating Docker or Kubernetes deployment to achieve a 98% match for Senior Backend roles."
                     </p>
@@ -152,7 +152,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAuth }) => {
                   <Target className="w-3.5 h-3.5 text-indigo-400" />
                   <span>Random Forest ML Eligibility Verified</span>
                 </span>
-                <span className="text-indigo-400 font-bold">Real-time Score</span>
+                <span className="text-indigo-400 font-bold">Interactive Preview</span>
               </div>
 
             </div>
@@ -163,20 +163,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAuth }) => {
         {/* Bottom Metrics Bar */}
         <div className="mt-20 pt-10 border-t border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div className="p-4 rounded-2xl bg-slate-900/50 border border-slate-800">
-            <div className="text-3xl font-extrabold text-white gradient-text">94%</div>
-            <div className="text-xs text-slate-400 font-medium mt-1">Average ATS Score Boost</div>
+            <div className="text-2xl font-extrabold text-white gradient-text">RAG Search</div>
+            <div className="text-xs text-slate-400 font-medium mt-1">ChromaDB Vector Store</div>
           </div>
           <div className="p-4 rounded-2xl bg-slate-900/50 border border-slate-800">
-            <div className="text-3xl font-extrabold text-white gradient-text">&lt; 3s</div>
-            <div className="text-xs text-slate-400 font-medium mt-1">AI Agent Response Time</div>
+            <div className="text-2xl font-extrabold text-white gradient-text">Random Forest</div>
+            <div className="text-xs text-slate-400 font-medium mt-1">Scikit-Learn Job Classifier</div>
           </div>
           <div className="p-4 rounded-2xl bg-slate-900/50 border border-slate-800">
-            <div className="text-3xl font-extrabold text-white gradient-text">500+</div>
-            <div className="text-xs text-slate-400 font-medium mt-1">Universities Supported</div>
+            <div className="text-2xl font-extrabold text-white gradient-text">LangGraph</div>
+            <div className="text-xs text-slate-400 font-medium mt-1">Autonomous Agent Engine</div>
           </div>
           <div className="p-4 rounded-2xl bg-slate-900/50 border border-slate-800">
-            <div className="text-3xl font-extrabold text-white gradient-text">10,000+</div>
-            <div className="text-xs text-slate-400 font-medium mt-1">Students Placed</div>
+            <div className="text-2xl font-extrabold text-white gradient-text">JWT & MongoDB</div>
+            <div className="text-xs text-slate-400 font-medium mt-1">Encrypted Atlas Storage</div>
           </div>
         </div>
 
