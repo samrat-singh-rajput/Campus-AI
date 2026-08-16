@@ -7,7 +7,14 @@ interface CareerInsightsProps {
 }
 
 export const CareerInsights: React.FC<CareerInsightsProps> = ({ user, onSelectTab }) => {
-  const userSkills = user?.skills || ['Python', 'FastAPI', 'React', 'MongoDB'];
+  const userSkills: string[] = user?.skills && user.skills.length > 0 ? user.skills : [];
+
+  // Compute profile completion dynamically based on authenticated user data presence
+  let completionScore = 20;
+  if (user?.name) completionScore += 20;
+  if (user?.email) completionScore += 20;
+  if (user?.college) completionScore += 20;
+  if (userSkills.length > 0) completionScore += 20;
 
   return (
     <div className="glass-card rounded-3xl p-6 border border-slate-800 shadow-xl glow-border">
@@ -17,7 +24,7 @@ export const CareerInsights: React.FC<CareerInsightsProps> = ({ user, onSelectTa
           <h3 className="text-base font-bold text-white">Career Progress & AI Insights</h3>
         </div>
         <span className="text-xs text-indigo-400 font-semibold bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-full">
-          Placement Readiness: High
+          {user ? 'Account Authenticated' : 'Demo Profile'}
         </span>
       </div>
 
@@ -26,14 +33,17 @@ export const CareerInsights: React.FC<CareerInsightsProps> = ({ user, onSelectTa
         {/* Overall Profile Completion Bar */}
         <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 space-y-2">
           <div className="flex justify-between text-xs font-semibold">
-            <span className="text-slate-300">Profile & Resume Verification</span>
-            <span className="text-emerald-400">85% Complete</span>
+            <span className="text-slate-300">Profile Completion</span>
+            <span className="text-emerald-400">{completionScore}% Complete</span>
           </div>
           <div className="w-full bg-slate-950 h-2.5 rounded-full overflow-hidden border border-slate-800">
-            <div className="bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-400 h-full w-[85%] rounded-full"></div>
+            <div
+              className="bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-400 h-full rounded-full transition-all duration-500"
+              style={{ width: `${completionScore}%` }}
+            ></div>
           </div>
           <p className="text-[11px] text-slate-400 mt-1">
-            Authenticated as <strong className="text-slate-200">{user?.name || 'Student'}</strong> ({user?.college || 'University'}).
+            Authenticated as <strong className="text-slate-200">{user?.name || 'Demo User'}</strong> ({user?.college || 'University Not Specified'}).
           </p>
         </div>
 
@@ -45,7 +55,7 @@ export const CareerInsights: React.FC<CareerInsightsProps> = ({ user, onSelectTa
           <div>
             <h4 className="text-xs font-bold text-white">AI Agent Recommendation</h4>
             <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-              "Your stack matches 85%+ of full-stack postings. Adding <strong>Docker</strong> or <strong>Kubernetes</strong> containerization to your profile will unlock 15 additional senior developer roles."
+              Upload your PDF resume in Step 5 to receive tailored ATS optimization and Random Forest job eligibility matching.
             </p>
             <button
               onClick={() => onSelectTab('assistant')}
@@ -61,15 +71,19 @@ export const CareerInsights: React.FC<CareerInsightsProps> = ({ user, onSelectTa
         <div className="space-y-2">
           <label className="text-xs font-bold uppercase tracking-wider text-slate-400">Your Verified Skill Vector:</label>
           <div className="flex flex-wrap gap-2">
-            {userSkills.map((s: string, idx: number) => (
-              <span
-                key={idx}
-                className="text-xs px-3 py-1 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 font-semibold flex items-center space-x-1.5"
-              >
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                <span>{s}</span>
-              </span>
-            ))}
+            {userSkills.length > 0 ? (
+              userSkills.map((s: string, idx: number) => (
+                <span
+                  key={idx}
+                  className="text-xs px-3 py-1 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 font-semibold flex items-center space-x-1.5"
+                >
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>{s}</span>
+                </span>
+              ))
+            ) : (
+              <span className="text-xs text-slate-500 italic">No skills registered yet. Upload a resume or add skills in settings.</span>
+            )}
           </div>
         </div>
 

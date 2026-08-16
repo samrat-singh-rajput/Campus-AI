@@ -25,7 +25,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ user, onSelectTab 
               <span>CampusMate AI Student Portal</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
-              Welcome back, <span className="gradient-text">{user?.name || 'Student'}</span>! 👋
+              Welcome back, <span className="gradient-text">{user?.name || 'Demo User'}</span>! 👋
             </h2>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
               {user?.college ? `${user.college} • ${user.degree || 'Degree Program'}` : 'Student Account Verified.'}{' '}
