@@ -1,12 +1,13 @@
 # Environment variables
 .env
 *.env.local
+backend/.env
 
 # Node modules & build outputs
 node_modules/
-client/node_modules/
-client/dist/
-client/build/
+frontend/node_modules/
+frontend/dist/
+frontend/build/
 .vite/
 
 # Python & virtual environment
@@ -16,21 +17,21 @@ __pycache__/
 venv/
 env/
 .venv/
-server/__pycache__/
-server/app/__pycache__/
-server/app/*/__pycache__/
+backend/.venv/
+backend/__pycache__/
+backend/app/__pycache__/
+backend/app/*/__pycache__/
 
-# ChromaDB Data Storage (keep directory structure if needed, exclude vector binary files if large)
-server/chroma_data/
+# ChromaDB Data Storage
+backend/chroma_data/
 chroma_data/
 
 # Uploads
-server/uploads/*
-!server/uploads/.gitkeep
+backend/uploads/*
+!backend/uploads/.gitkeep
 
-# ML Models & Datasets
-server/ml/model/*.pkl
-server/ml/model/*.joblib
+# ML Models & Datasets (keep job_eligibility_model.joblib tracked if present in backend/models)
+backend/ml/model/*.pkl
 
 # System logs & IDE
 .DS_Store

@@ -4,11 +4,47 @@ CampusMate AI is a modern, responsive, full-stack AI career and placement platfo
 
 ---
 
+## 📂 Monorepo Project Structure
+
+```
+Campus-AI/
+│
+├── frontend/                     # React + TypeScript + Vite Client
+│   ├── public/
+│   ├── src/
+│   │   ├── components/           # UI components (Header, Sidebar, StatCards, etc.)
+│   │   ├── layouts/              # Dashboard and Navigation layouts
+│   │   ├── views/                # Full views (Jobs, Applications, Resume, Assistant, etc.)
+│   │   └── services/             # Axios REST API client modules
+│   ├── package.json
+│   └── vite.config.ts            # Vite config with /api proxy to http://127.0.0.1:8000
+│
+├── backend/                      # FastAPI + Python 3.13 Backend
+│   ├── app/
+│   │   ├── config/               # Settings & environment configuration
+│   │   ├── database/             # MongoDB Atlas & ChromaDB connectors
+│   │   ├── routes/               # FastAPI REST endpoints
+│   │   ├── schemas/              # Pydantic data schemas
+│   │   ├── services/             # Core business logic, ML engine, & RAG agent
+│   │   └── main.py               # FastAPI application entrypoint
+│   ├── models/                   # Trained Random Forest Scikit-Learn model (.joblib)
+│   ├── chroma_data/              # Persistent ChromaDB vector database storage
+│   ├── requirements.txt
+│   ├── .env
+│   └── .env.example
+│
+├── package.json                  # Root package.json with single-command runner (concurrently)
+├── .gitignore
+└── README.md
+```
+
+---
+
 ## 🎨 System Architecture
 
 ```
                                   ┌───────────────────────────────────────────────────┐
-                                  │            React 19 + TypeScript Client           │
+                                  │          React 19 + TypeScript Frontend           │
                                   │                 (Vite + Tailwind CSS)             │
                                   └─────────────────────────┬─────────────────────────┘
                                                             │ HTTP / REST API (JWT)
@@ -41,12 +77,40 @@ CampusMate AI is a modern, responsive, full-stack AI career and placement platfo
 
 ---
 
+## ⚡ Single Command Development
+
+You can launch both the **Frontend UI** (`http://localhost:5173`) and **Backend Server** (`http://127.0.0.1:8000`) with a single command from the root directory:
+
+```bash
+npm run dev
+```
+
+This runs both servers concurrently:
+- **Frontend:** React 19 + Vite (`http://localhost:5173`)
+- **Backend:** FastAPI + Uvicorn (`http://127.0.0.1:8000`) via `backend/.venv/Scripts/python.exe`
+
+### Individual Command Fallbacks
+If you prefer running services separately:
+
+```bash
+# Frontend only
+npm run dev:frontend
+
+# Backend only
+npm run dev:backend
+
+# Production Frontend Build
+npm run build
+```
+
+---
+
 ## 🛠️ Technology Stack
 
 - **Frontend:** React 19, TypeScript, Vite, Tailwind CSS v4, Lucide Icons, Axios
 - **Backend Framework:** Python 3.13, FastAPI, Pydantic v2, Uvicorn, PyJWT, Bcrypt
 - **Primary Database:** MongoDB Atlas (handled via `motor` async driver)
-- **Vector Store & RAG:** Persistent ChromaDB (`./chroma_data`) with dense embeddings (`all-MiniLM-L6-v2`)
+- **Vector Store & RAG:** Persistent ChromaDB (`backend/chroma_data`) with dense embeddings (`all-MiniLM-L6-v2`)
 - **Machine Learning Engine:** Scikit-Learn `RandomForestClassifier` (100 estimators, 95.83% classification accuracy)
 - **Autonomous Agent:** LangGraph `StateGraph` multi-tool autonomous state orchestration
 - **Resume Parsing:** PyPDF text extraction + 6-category technical skill taxonomy parser
@@ -86,51 +150,6 @@ CampusMate AI is a modern, responsive, full-stack AI career and placement platfo
 8. **AI Career Insights & Analytics Hub:**
    - Calculates a unified **Career Readiness Score (0-100%)** combining ATS rating, skills count, job fit, interview scores, and application pipeline activity.
    - User profile settings editor and verified skill vector chip manager.
-
----
-
-## 📋 Project Status Checklist (All 13 Steps Completed)
-
-- [x] **STEP 1 — System Foundation Setup** (FastAPI + React + MongoDB Atlas + ChromaDB)
-- [x] **STEP 2 — Authentication System** (JWT + Bcrypt UTF-8 password length validation)
-- [x] **STEP 3 — Landing Page & Branding** (Credible metrics & demo student personas)
-- [x] **STEP 4 — Dashboard & Navigation Layout** (Responsive sidebar & top header)
-- [x] **STEP 5 — Resume Parsing & Upload Service** (PyPDF text extraction & ATS scoring)
-- [x] **STEP 6 — Vector Embeddings & ChromaDB RAG Pipeline** (3 persistent collections)
-- [x] **STEP 7 — ML Model Training & Recommendation Engine** (Scikit-Learn RandomForestClassifier)
-- [x] **STEP 8 — Job Management & Application Matching Service** (Dual ML + Vector RAG score)
-- [x] **STEP 9 — LangGraph Autonomous AI Agent** (Multi-tool stateful workflow)
-- [x] **STEP 10 — AI Mock Interview Coach** (Question bank, voice speech-to-text, scorecards)
-- [x] **STEP 11 — Analytics, Insights & Settings** (Career Readiness Score & skill manager)
-- [x] **STEP 12 — Full Platform Integration & End-to-End Workflow** (10 verified integration points)
-- [x] **STEP 13 — Production Polish, Security Review & Acceptance Verification** (Final build & UI polish)
-
----
-
-## 🚀 Quick Start Guide
-
-### 1. Backend Server Setup
-```bash
-cd server
-python -m venv .venv
-# On Windows:
-.venv\Scripts\activate
-# On macOS/Linux:
-source .venv/bin/activate
-
-pip install -r requirements.txt
-python -m uvicorn app.main:app --reload --port 8000
-```
-- API Swagger Docs: `http://127.0.0.1:8000/docs`
-- Health Endpoint: `http://127.0.0.1:8000/api/health`
-
-### 2. Frontend Client Setup
-```bash
-cd client
-npm install
-npm run dev
-```
-- Frontend UI: `http://localhost:5173`
 
 ---
 
