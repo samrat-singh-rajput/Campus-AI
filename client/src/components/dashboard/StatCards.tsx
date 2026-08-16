@@ -4,16 +4,17 @@ import { FileText, Target, Kanban, Mic, ArrowUpRight, CheckCircle } from 'lucide
 interface StatCardsProps {
   user?: any;
   onSelectTab: (tabId: string) => void;
+  atsScore?: number | null;
 }
 
-export const StatCards: React.FC<StatCardsProps> = ({ user: _user, onSelectTab }) => {
+export const StatCards: React.FC<StatCardsProps> = ({ user: _user, onSelectTab, atsScore }) => {
   const stats = [
     {
       id: 'resume',
       title: 'ATS Resume Score',
-      value: 'Not analyzed yet',
-      change: 'Upload resume to calculate',
-      isPositive: false,
+      value: atsScore != null ? `${atsScore} / 100` : 'Not analyzed yet',
+      change: atsScore != null ? 'Parsed PDF ATS Rating' : 'Upload resume to calculate',
+      isPositive: atsScore != null,
       badge: 'Step 5 Parser',
       icon: FileText,
       color: 'from-blue-500 to-indigo-600',

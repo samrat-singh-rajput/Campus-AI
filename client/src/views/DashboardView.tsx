@@ -8,9 +8,10 @@ import { CareerInsights } from '../components/dashboard/CareerInsights';
 interface DashboardViewProps {
   user: any;
   onSelectTab: (tabId: string) => void;
+  atsScore?: number | null;
 }
 
-export const DashboardView: React.FC<DashboardViewProps> = ({ user, onSelectTab }) => {
+export const DashboardView: React.FC<DashboardViewProps> = ({ user, onSelectTab, atsScore }) => {
   return (
     <div className="space-y-8 pb-12">
       
@@ -52,7 +53,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ user, onSelectTab 
       </div>
 
       {/* 1. Statistics Cards */}
-      <StatCards user={user} onSelectTab={onSelectTab} />
+      <StatCards user={user} onSelectTab={onSelectTab} atsScore={atsScore} />
 
       {/* 2. Quick AI Actions Grid */}
       <QuickActions onSelectTab={onSelectTab} />
