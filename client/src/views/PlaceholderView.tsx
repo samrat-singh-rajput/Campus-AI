@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, Clock, ShieldCheck } from 'lucide-react';
 import { NAV_ITEMS } from '../components/dashboard/Sidebar';
+import { VectorSearchWidget } from '../components/dashboard/VectorSearchWidget';
 
 interface PlaceholderViewProps {
   tabId: string;
@@ -103,6 +104,11 @@ export const PlaceholderView: React.FC<PlaceholderViewProps> = ({ tabId, user, o
         <ArrowLeft className="w-4 h-4" />
         <span>Back to Dashboard</span>
       </button>
+
+      {/* ChromaDB Vector RAG Explorer Widget */}
+      {tabId === 'assistant' && (
+        <VectorSearchWidget />
+      )}
 
       {/* Main Feature Card */}
       <div className="glass-card rounded-3xl p-8 border border-slate-800 relative overflow-hidden glow-border">

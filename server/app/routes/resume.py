@@ -81,6 +81,19 @@ async def upload_and_parse_resume(
         parsed_data=parsed_data
     )
 
+    # 6. Index Resume Embedding in ChromaDB Vector Store
+    try:
+        from app.services.rag_service import index_resume_vector
+        index_resume_vector(
+            user_id=user_id,
+            resume_id=resume_doc.get("id", "res_latest"),
+            raw_text=raw_text,
+            extracted_skills=parsed_data.get("extracted_skills", []),
+            ats_score=parsed_data.get("ats_analysis", {}).get("overall_score", 0)
+        )
+    except Exception as err:
+        logger.warning(f"Failed to index resume vector in ChromaDB: {err}")
+
     return ResumeResponse(**resume_doc)
 
 @router.get("/me", response_model=ResumeResponse, status_code=status.HTTP_200_OK)
