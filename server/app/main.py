@@ -12,6 +12,7 @@ from app.routes.rag import router as rag_router
 from app.routes.jobs import router as jobs_router
 from app.routes.applications import router as applications_router
 from app.routes.agent import router as agent_router
+from app.routes.interview import router as interview_router
 
 # Configure Logging
 logging.basicConfig(
@@ -62,6 +63,7 @@ app.include_router(rag_router)
 app.include_router(jobs_router)
 app.include_router(applications_router)
 app.include_router(agent_router)
+app.include_router(interview_router)
 
 @app.get("/")
 async def root():

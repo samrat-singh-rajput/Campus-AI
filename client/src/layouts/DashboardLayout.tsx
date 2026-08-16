@@ -6,6 +6,7 @@ import { ResumeView } from '../views/ResumeView';
 import { JobsView } from '../views/JobsView';
 import { ApplicationsView } from '../views/ApplicationsView';
 import { AssistantView } from '../views/AssistantView';
+import { InterviewView } from '../views/InterviewView';
 import { PlaceholderView } from '../views/PlaceholderView';
 
 interface DashboardLayoutProps {
@@ -79,6 +80,12 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ user, onLogout
               onBackToDashboard={() => setActiveTab('dashboard')}
               onSelectTab={setActiveTab}
               onApplicationsCountChanged={(count) => setApplicationsCount(count)}
+            />
+          ) : activeTab === 'interview' ? (
+            <InterviewView
+              user={user}
+              onBackToDashboard={() => setActiveTab('dashboard')}
+              onSelectTab={setActiveTab}
             />
           ) : (
             <PlaceholderView
