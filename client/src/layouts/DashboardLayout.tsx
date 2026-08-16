@@ -3,6 +3,7 @@ import { Sidebar } from '../components/dashboard/Sidebar';
 import { TopHeader } from '../components/dashboard/TopHeader';
 import { DashboardView } from '../views/DashboardView';
 import { ResumeView } from '../views/ResumeView';
+import { JobsView } from '../views/JobsView';
 import { PlaceholderView } from '../views/PlaceholderView';
 
 interface DashboardLayoutProps {
@@ -51,6 +52,12 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ user, onLogout
               user={user}
               onBackToDashboard={() => setActiveTab('dashboard')}
               onResumeParsed={(score) => setAtsScore(score)}
+            />
+          ) : activeTab === 'jobs' ? (
+            <JobsView
+              user={user}
+              onBackToDashboard={() => setActiveTab('dashboard')}
+              onSelectTab={setActiveTab}
             />
           ) : (
             <PlaceholderView
