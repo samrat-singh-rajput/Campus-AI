@@ -5,6 +5,7 @@ import { DashboardView } from '../views/DashboardView';
 import { ResumeView } from '../views/ResumeView';
 import { JobsView } from '../views/JobsView';
 import { ApplicationsView } from '../views/ApplicationsView';
+import { AssistantView } from '../views/AssistantView';
 import { PlaceholderView } from '../views/PlaceholderView';
 
 interface DashboardLayoutProps {
@@ -53,6 +54,12 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ user, onLogout
               onSelectTab={setActiveTab}
               atsScore={atsScore}
               applicationsCount={applicationsCount}
+            />
+          ) : activeTab === 'assistant' ? (
+            <AssistantView
+              user={user}
+              onBackToDashboard={() => setActiveTab('dashboard')}
+              onSelectTab={setActiveTab}
             />
           ) : activeTab === 'resume' ? (
             <ResumeView
