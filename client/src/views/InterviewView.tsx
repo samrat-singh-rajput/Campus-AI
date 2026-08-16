@@ -167,7 +167,7 @@ export const InterviewView: React.FC<InterviewViewProps> = ({ user: _user, onBac
 
         <span className="bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider flex items-center space-x-1.5 font-mono">
           <BrainCircuit className="w-3.5 h-3.5" />
-          <span>STEP 10 AI Mock Interview Coach</span>
+          <span>AI Mock Interview Coach</span>
         </span>
       </div>
 

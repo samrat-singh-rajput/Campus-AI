@@ -152,7 +152,7 @@ export const AssistantView: React.FC<AssistantViewProps> = ({ user, onBackToDash
                 <h3 className="text-sm font-bold text-white flex items-center space-x-2">
                   <span>LangGraph Agent & RAG Assistant</span>
                   <span className="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 font-mono font-bold">
-                    STEP 9 Active
+                    StateGraph Engine
                   </span>
                 </h3>
                 <p className="text-[11px] text-slate-400">Multi-Tool Autonomous StateGraph Engine</p>

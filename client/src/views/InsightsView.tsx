@@ -59,7 +59,7 @@ export const InsightsView: React.FC<InsightsViewProps> = ({ user: _user, onBackT
 
         <span className="bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider flex items-center space-x-1.5 font-mono">
           <TrendingUp className="w-3.5 h-3.5" />
-          <span>STEP 11 Platform Analytics</span>
+          <span>Platform Analytics Hub</span>
         </span>
       </div>
 
@@ -126,7 +126,7 @@ export const InsightsView: React.FC<InsightsViewProps> = ({ user: _user, onBackT
               <p className="text-2xl font-extrabold text-white">
                 {data.ats_score ? `${data.ats_score} / 100` : 'Not analyzed'}
               </p>
-              <p className="text-[10px] text-slate-500 font-mono">PyPDF Step 5 Parser</p>
+              <p className="text-[10px] text-slate-500 font-mono">PyPDF ATS Parser</p>
             </div>
 
             <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-2 glow-border">
@@ -148,7 +148,7 @@ export const InsightsView: React.FC<InsightsViewProps> = ({ user: _user, onBackT
               <p className="text-2xl font-extrabold text-white">
                 {data.applications_count} Submitted
               </p>
-              <p className="text-[10px] text-slate-500 font-mono">Step 8 Tracker</p>
+              <p className="text-[10px] text-slate-500 font-mono">Application Tracker</p>
             </div>
 
             <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-2 glow-border">
@@ -159,7 +159,7 @@ export const InsightsView: React.FC<InsightsViewProps> = ({ user: _user, onBackT
               <p className="text-2xl font-extrabold text-white">
                 {data.interviews_count > 0 ? `${data.average_interview_score}%` : '0 Sessions'}
               </p>
-              <p className="text-[10px] text-slate-500 font-mono">Step 10 Coach</p>
+              <p className="text-[10px] text-slate-500 font-mono">Voice Practice Coach</p>
             </div>
 
           </div>

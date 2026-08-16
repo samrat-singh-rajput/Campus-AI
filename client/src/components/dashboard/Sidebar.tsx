@@ -24,13 +24,13 @@ export interface NavItem {
 
 export const NAV_ITEMS: NavItem[] = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
-  { id: 'assistant', label: 'AI Assistant', icon: Bot, path: '/dashboard/assistant', stepBadge: 'Step 9' },
-  { id: 'resume', label: 'My Resume', icon: FileText, path: '/dashboard/resume', stepBadge: 'Step 5' },
-  { id: 'jobs', label: 'Job Matches', icon: Target, path: '/dashboard/jobs', stepBadge: 'Step 7/8' },
-  { id: 'applications', label: 'Applications', icon: Kanban, path: '/dashboard/applications', stepBadge: 'Step 11' },
-  { id: 'interview', label: 'Interview Coach', icon: Mic, path: '/dashboard/interview', stepBadge: 'Step 10' },
-  { id: 'insights', label: 'AI Insights', icon: TrendingUp, path: '/dashboard/insights', stepBadge: 'Step 12' },
-  { id: 'settings', label: 'Settings', icon: Settings, path: '/dashboard/settings', stepBadge: 'Step 12' }
+  { id: 'assistant', label: 'AI Assistant', icon: Bot, path: '/dashboard/assistant' },
+  { id: 'resume', label: 'My Resume', icon: FileText, path: '/dashboard/resume' },
+  { id: 'jobs', label: 'Job Matches', icon: Target, path: '/dashboard/jobs' },
+  { id: 'applications', label: 'Applications', icon: Kanban, path: '/dashboard/applications' },
+  { id: 'interview', label: 'Interview Coach', icon: Mic, path: '/dashboard/interview' },
+  { id: 'insights', label: 'AI Insights', icon: TrendingUp, path: '/dashboard/insights' },
+  { id: 'settings', label: 'Settings', icon: Settings, path: '/dashboard/settings' }
 ];
 
 interface SidebarProps {

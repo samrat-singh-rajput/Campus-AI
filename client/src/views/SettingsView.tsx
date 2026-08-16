@@ -86,7 +86,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ user, onBackToDashbo
 
         <span className="bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider flex items-center space-x-1.5 font-mono">
           <Settings className="w-3.5 h-3.5" />
-          <span>STEP 11 Platform Settings</span>
+          <span>Platform Settings</span>
         </span>
       </div>
 

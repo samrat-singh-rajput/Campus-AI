@@ -123,7 +123,7 @@ export const JobsView: React.FC<JobsViewProps> = ({ user: _user, onBackToDashboa
           <h2 className="text-xl font-extrabold text-white flex items-center space-x-2">
             <span>Job Matches & Eligibility Classifier</span>
             <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-800 text-indigo-400 font-mono">
-              STEP 7 ML
+              Random Forest ML
             </span>
           </h2>
           <p className="text-xs text-slate-400 mt-1">

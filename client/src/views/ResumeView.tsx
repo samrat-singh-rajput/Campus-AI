@@ -125,7 +125,7 @@ export const ResumeView: React.FC<ResumeViewProps> = ({ user: _user, onBackToDas
         <div className="flex items-center space-x-2">
           <span className="bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider flex items-center space-x-1.5">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>STEP 5 Engine Active</span>
+            <span>PyPDF ATS Parser</span>
           </span>
         </div>
       </div>

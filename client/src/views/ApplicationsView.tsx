@@ -112,7 +112,7 @@ export const ApplicationsView: React.FC<ApplicationsViewProps> = ({
             <Kanban className="w-5 h-5 text-indigo-400" />
             <span>Campus Drive Application Pipeline</span>
             <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-800 text-indigo-400 font-mono">
-              STEP 8 Active
+              Dual Match Pipeline
             </span>
           </h2>
           <p className="text-xs text-slate-400 mt-1">

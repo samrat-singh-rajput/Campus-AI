@@ -10,7 +10,7 @@ export const Features: React.FC = () => {
       bgGlow: 'bg-blue-500/10',
       title: 'Smart Resume Parser & ATS Optimizer',
       description: 'Extract skills, education, and experience from PDF resumes instantly. Get an objective ATS score with specific missing keyword alerts to bypass recruiters\' automated filters.',
-      badge: 'Step 5 Engine'
+      badge: 'PyPDF Parser'
     },
     {
       icon: Target,
@@ -19,7 +19,7 @@ export const Features: React.FC = () => {
       bgGlow: 'bg-indigo-500/10',
       title: 'AI Job Matcher & Eligibility Engine',
       description: 'Powered by a Scikit-Learn Random Forest ML model. Evaluates candidate skill vectors against real job descriptions to provide eligibility probabilities and skill gap breakdown.',
-      badge: 'Step 7 ML Model'
+      badge: 'Random Forest ML'
     },
     {
       icon: Mic,
@@ -28,7 +28,7 @@ export const Features: React.FC = () => {
       bgGlow: 'bg-purple-500/10',
       title: 'AI Mock Interview Coach',
       description: 'Practice interactive voice and text technical/behavioral mock interviews tailored to your target company. Receive actionable feedback on clarity, technical accuracy, and tone.',
-      badge: 'Step 10 Voice & Speech'
+      badge: 'Voice & Speech'
     },
     {
       icon: Kanban,
@@ -37,7 +37,7 @@ export const Features: React.FC = () => {
       bgGlow: 'bg-emerald-500/10',
       title: 'Application Kanban Tracker',
       description: 'Organize your job search visual pipeline with drag-and-drop Kanban columns: Saved, Applied, Interviewing, Offered, and Rejected. Never miss a deadline again.',
-      badge: 'Step 11 Pipeline'
+      badge: 'Kanban Pipeline'
     },
     {
       icon: Bot,
@@ -46,7 +46,7 @@ export const Features: React.FC = () => {
       bgGlow: 'bg-amber-500/10',
       title: 'LangGraph Autonomous AI Agent',
       description: 'Multi-tool agent powered by LangGraph & ChromaDB vector RAG. Ask complex career questions, receive salary benchmarks, and generate tailored cover letters on demand.',
-      badge: 'Step 9 Orchestration'
+      badge: 'LangGraph Agent'
     },
     {
       icon: Database,
@@ -55,7 +55,7 @@ export const Features: React.FC = () => {
       bgGlow: 'bg-cyan-500/10',
       title: 'Secure Student Data Vault',
       description: 'Your career data is protected with JWT token authentication, bcrypt password encryption, MongoDB Atlas primary storage, and local persistent ChromaDB embeddings.',
-      badge: 'Step 1 & 2 Security'
+      badge: 'JWT & Bcrypt'
     }
   ];
 

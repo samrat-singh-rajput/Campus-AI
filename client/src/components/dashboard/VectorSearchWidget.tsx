@@ -62,8 +62,8 @@ export const VectorSearchWidget: React.FC = () => {
           <div>
             <h3 className="text-base font-bold text-white flex items-center space-x-2">
               <span>ChromaDB Vector RAG Explorer</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono font-bold">
-                Step 6 Active
+              <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-800 text-purple-400 font-mono">
+                Vector Store Active
               </span>
             </h3>
             <p className="text-xs text-slate-400">Persistent Vector Database • 384-Dim Semantic Embeddings</p>
