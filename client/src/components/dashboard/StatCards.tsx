@@ -5,9 +5,10 @@ interface StatCardsProps {
   user?: any;
   onSelectTab: (tabId: string) => void;
   atsScore?: number | null;
+  applicationsCount?: number | null;
 }
 
-export const StatCards: React.FC<StatCardsProps> = ({ user: _user, onSelectTab, atsScore }) => {
+export const StatCards: React.FC<StatCardsProps> = ({ user: _user, onSelectTab, atsScore, applicationsCount }) => {
   const stats = [
     {
       id: 'resume',
@@ -36,10 +37,10 @@ export const StatCards: React.FC<StatCardsProps> = ({ user: _user, onSelectTab, 
     {
       id: 'applications',
       title: 'Active Applications',
-      value: '0',
-      change: 'Kanban pipeline ready',
+      value: applicationsCount != null ? `${applicationsCount} Active` : '0',
+      change: applicationsCount != null && applicationsCount > 0 ? 'Applications in Pipeline' : 'Kanban pipeline ready',
       isPositive: true,
-      badge: 'Step 11 Kanban',
+      badge: 'Step 8 Tracker',
       icon: Kanban,
       color: 'from-emerald-500 to-teal-600',
       accent: 'text-emerald-400',

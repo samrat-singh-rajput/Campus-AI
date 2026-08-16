@@ -9,9 +9,10 @@ interface DashboardViewProps {
   user: any;
   onSelectTab: (tabId: string) => void;
   atsScore?: number | null;
+  applicationsCount?: number | null;
 }
 
-export const DashboardView: React.FC<DashboardViewProps> = ({ user, onSelectTab, atsScore }) => {
+export const DashboardView: React.FC<DashboardViewProps> = ({ user, onSelectTab, atsScore, applicationsCount }) => {
   return (
     <div className="space-y-8 pb-12">
       
@@ -53,7 +54,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ user, onSelectTab,
       </div>
 
       {/* 1. Statistics Cards */}
-      <StatCards user={user} onSelectTab={onSelectTab} atsScore={atsScore} />
+      <StatCards user={user} onSelectTab={onSelectTab} atsScore={atsScore} applicationsCount={applicationsCount} />
 
       {/* 2. Quick AI Actions Grid */}
       <QuickActions onSelectTab={onSelectTab} />

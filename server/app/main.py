@@ -10,6 +10,7 @@ from app.routes.auth import router as auth_router
 from app.routes.resume import router as resume_router
 from app.routes.rag import router as rag_router
 from app.routes.jobs import router as jobs_router
+from app.routes.applications import router as applications_router
 
 # Configure Logging
 logging.basicConfig(
@@ -58,6 +59,7 @@ app.include_router(auth_router)
 app.include_router(resume_router)
 app.include_router(rag_router)
 app.include_router(jobs_router)
+app.include_router(applications_router)
 
 @app.get("/")
 async def root():

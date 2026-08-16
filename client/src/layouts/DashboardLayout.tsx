@@ -4,6 +4,7 @@ import { TopHeader } from '../components/dashboard/TopHeader';
 import { DashboardView } from '../views/DashboardView';
 import { ResumeView } from '../views/ResumeView';
 import { JobsView } from '../views/JobsView';
+import { ApplicationsView } from '../views/ApplicationsView';
 import { PlaceholderView } from '../views/PlaceholderView';
 
 interface DashboardLayoutProps {
@@ -16,6 +17,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ user, onLogout
   const [activeTab, setActiveTab] = useState<string>('dashboard');
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [atsScore, setAtsScore] = useState<number | null>(null);
+  const [applicationsCount, setApplicationsCount] = useState<number | null>(null);
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
@@ -46,7 +48,12 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ user, onLogout
         {/* Content Container */}
         <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
           {activeTab === 'dashboard' ? (
-            <DashboardView user={user} onSelectTab={setActiveTab} atsScore={atsScore} />
+            <DashboardView
+              user={user}
+              onSelectTab={setActiveTab}
+              atsScore={atsScore}
+              applicationsCount={applicationsCount}
+            />
           ) : activeTab === 'resume' ? (
             <ResumeView
               user={user}
@@ -58,6 +65,13 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ user, onLogout
               user={user}
               onBackToDashboard={() => setActiveTab('dashboard')}
               onSelectTab={setActiveTab}
+            />
+          ) : activeTab === 'applications' ? (
+            <ApplicationsView
+              user={user}
+              onBackToDashboard={() => setActiveTab('dashboard')}
+              onSelectTab={setActiveTab}
+              onApplicationsCountChanged={(count) => setApplicationsCount(count)}
             />
           ) : (
             <PlaceholderView
