@@ -7,6 +7,8 @@ import { JobsView } from '../views/JobsView';
 import { ApplicationsView } from '../views/ApplicationsView';
 import { AssistantView } from '../views/AssistantView';
 import { InterviewView } from '../views/InterviewView';
+import { InsightsView } from '../views/InsightsView';
+import { SettingsView } from '../views/SettingsView';
 import { PlaceholderView } from '../views/PlaceholderView';
 
 interface DashboardLayoutProps {
@@ -15,7 +17,8 @@ interface DashboardLayoutProps {
   onGoHome: () => void;
 }
 
-export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ user, onLogout, onGoHome }) => {
+export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ user: initialUser, onLogout, onGoHome }) => {
+  const [user, setUser] = useState<any>(initialUser);
   const [activeTab, setActiveTab] = useState<string>('dashboard');
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [atsScore, setAtsScore] = useState<number | null>(null);
@@ -86,6 +89,19 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ user, onLogout
               user={user}
               onBackToDashboard={() => setActiveTab('dashboard')}
               onSelectTab={setActiveTab}
+            />
+          ) : activeTab === 'insights' ? (
+            <InsightsView
+              user={user}
+              onBackToDashboard={() => setActiveTab('dashboard')}
+              onSelectTab={setActiveTab}
+            />
+          ) : activeTab === 'settings' ? (
+            <SettingsView
+              user={user}
+              onBackToDashboard={() => setActiveTab('dashboard')}
+              onSelectTab={setActiveTab}
+              onUserUpdated={(updatedUser) => setUser(updatedUser)}
             />
           ) : (
             <PlaceholderView
