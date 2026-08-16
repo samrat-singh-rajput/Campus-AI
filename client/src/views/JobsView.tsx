@@ -14,6 +14,7 @@ import {
   DollarSign
 } from 'lucide-react';
 import { fetchMyJobRecommendations, evaluateSingleJobEligibility } from '../services/jobService';
+import { submitApplication } from '../services/applicationService';
 import type { JobResponse, MLEligibilityResult } from '../services/jobService';
 
 interface JobsViewProps {
@@ -28,7 +29,10 @@ export const JobsView: React.FC<JobsViewProps> = ({ user: _user, onBackToDashboa
   const [filterTier, setFilterTier] = useState<'all' | 'high' | 'moderate'>('all');
   const [selectedJobEval, setSelectedJobEval] = useState<MLEligibilityResult | null>(null);
   const [evaluatingId, setEvaluatingId] = useState<string | null>(null);
+  const [applyingId, setApplyingId] = useState<string | null>(null);
+  const [appliedJobs, setAppliedJobs] = useState<Set<string>>(new Set());
   const [error, setError] = useState<string | null>(null);
+  const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
   const loadRecommendations = async () => {
     setLoading(true);
@@ -46,6 +50,25 @@ export const JobsView: React.FC<JobsViewProps> = ({ user: _user, onBackToDashboa
   useEffect(() => {
     loadRecommendations();
   }, []);
+
+  const handleApplyJob = async (jobId: string) => {
+    setApplyingId(jobId);
+    setError(null);
+    setSuccessMsg(null);
+    try {
+      await submitApplication(jobId, 'Applied directly from ML Job Recommendations view');
+      setAppliedJobs((prev) => new Set(prev).add(jobId));
+      setSuccessMsg('Application submitted successfully! Tracking in Application Pipeline.');
+      if (selectedJobEval?.job_id === jobId) {
+        setSelectedJobEval(null);
+      }
+    } catch (err: any) {
+      const msg = err?.response?.data?.detail || 'Failed to submit application or already applied.';
+      setError(msg);
+    } finally {
+      setApplyingId(null);
+    }
+  };
 
   const handleEvaluateJob = async (jobId: string) => {
     setEvaluatingId(jobId);
@@ -144,6 +167,13 @@ export const JobsView: React.FC<JobsViewProps> = ({ user: _user, onBackToDashboa
         </div>
       </div>
 
+      {successMsg && (
+        <p className="text-xs text-emerald-400 bg-emerald-500/10 p-4 rounded-2xl border border-emerald-500/20 flex items-center space-x-2">
+          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+          <span>{successMsg}</span>
+        </p>
+      )}
+
       {error && (
         <p className="text-xs text-rose-400 bg-rose-500/10 p-4 rounded-2xl border border-rose-500/20">{error}</p>
       )}
@@ -225,14 +255,35 @@ export const JobsView: React.FC<JobsViewProps> = ({ user: _user, onBackToDashboa
                     <p className="text-[10px] text-slate-500 mt-1 font-mono hidden md:block">Scikit-Learn Model Output</p>
                   </div>
 
-                  <button
-                    onClick={() => handleEvaluateJob(job.id)}
-                    disabled={evaluatingId === job.id}
-                    className="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-indigo-400 hover:text-white rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5"
-                  >
-                    {evaluatingId === job.id ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}
-                    <span>Evaluate Fit</span>
-                  </button>
+                  <div className="flex items-center space-x-2">
+                    <button
+                      onClick={() => handleEvaluateJob(job.id)}
+                      disabled={evaluatingId === job.id}
+                      className="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-indigo-400 hover:text-white rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5"
+                    >
+                      {evaluatingId === job.id ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}
+                      <span>Fit</span>
+                    </button>
+
+                    <button
+                      onClick={() => handleApplyJob(job.id)}
+                      disabled={applyingId === job.id || appliedJobs.has(job.id)}
+                      className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 ${
+                        appliedJobs.has(job.id)
+                          ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 cursor-default'
+                          : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-md'
+                      }`}
+                    >
+                      {applyingId === job.id ? (
+                        <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                      ) : appliedJobs.has(job.id) ? (
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                      ) : (
+                        <Briefcase className="w-3.5 h-3.5" />
+                      )}
+                      <span>{appliedJobs.has(job.id) ? 'Applied' : 'Apply Now'}</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             );
