@@ -75,17 +75,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
               onClick={() => { onGoHome(); onCloseMobile(); }}
               className="flex items-center space-x-3 text-left group"
             >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-500 to-purple-600 p-0.5 shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
-                <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                  <Sparkles className="w-5 h-5 text-indigo-400" />
-                </div>
-              </div>
-              <div>
-                <span className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
-                  CampusMate AI
-                </span>
-                <p className="text-[10px] text-slate-400 font-medium">Student Dashboard</p>
-              </div>
+              <img
+                src="/logo.png"
+                alt="CampusMate AI Logo"
+                className="h-[52px] sm:h-[56px] lg:h-[58px] w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200"
+              />
             </button>
 
             {/* Mobile Close Button */}

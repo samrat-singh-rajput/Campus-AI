@@ -17,22 +17,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAuth, user, onLogout }) =>
           
           {/* Logo Branding */}
           <a href="#" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-500 to-purple-600 p-0.5 shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-200">
-              <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-indigo-400 group-hover:rotate-12 transition-transform duration-200" />
-              </div>
-            </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <span className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
-                  CampusMate AI
-                </span>
-                <span className="bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
-                  v1.0
-                </span>
-              </div>
-              <p className="text-[11px] text-slate-400 font-medium tracking-wide">Your AI Career Companion</p>
-            </div>
+            <img
+              src="/logo.png"
+              alt="CampusMate AI Logo"
+              className="h-[38px] sm:h-[44px] md:h-[48px] lg:h-[50px] w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200"
+            />
+            <span className="bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider hidden sm:inline-block">
+              v1.0
+            </span>
           </a>
 
           {/* Desktop Navigation Links */}
