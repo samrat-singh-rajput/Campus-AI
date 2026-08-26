@@ -12,6 +12,7 @@ import { HealthStatus } from './components/HealthStatus';
 import { AuthModal } from './components/AuthModal';
 import { Footer } from './components/Footer';
 import { DashboardLayout } from './layouts/DashboardLayout';
+import { GlobalLoader } from './components/GlobalLoader';
 
 export const App: React.FC = () => {
   const [health, setHealth] = useState<HealthResponse | null>(null);
@@ -74,93 +75,89 @@ export const App: React.FC = () => {
     setCurrentView('landing');
   };
 
-  // Protected View Routing logic
-  if (currentView === 'dashboard') {
-    if (!user) {
-      // Unauthenticated access protection
-      return (
-        <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-center items-center p-4">
-          <div className="glass-card max-w-md w-full p-8 rounded-3xl text-center space-y-4">
-            <h2 className="text-xl font-bold text-white">Protected Dashboard Access</h2>
-            <p className="text-xs text-slate-400">Please log in to your student account to access the dashboard.</p>
-            <div className="pt-2 flex gap-3">
-              <button
-                onClick={() => { setCurrentView('landing'); handleOpenAuth('login'); }}
-                className="flex-1 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-bold text-xs"
-              >
-                Log In
-              </button>
-              <button
-                onClick={() => setCurrentView('landing')}
-                className="flex-1 py-2.5 bg-slate-900 border border-slate-800 text-slate-300 rounded-xl font-semibold text-xs"
-              >
-                Landing Page
-              </button>
+  return (
+    <>
+      <GlobalLoader />
+      {currentView === 'dashboard' ? (
+        !user ? (
+          <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-center items-center p-4">
+            <div className="glass-card max-w-md w-full p-8 rounded-3xl text-center space-y-4">
+              <h2 className="text-xl font-bold text-white">Protected Dashboard Access</h2>
+              <p className="text-xs text-slate-400">Please log in to your student account to access the dashboard.</p>
+              <div className="pt-2 flex gap-3">
+                <button
+                  onClick={() => { setCurrentView('landing'); handleOpenAuth('login'); }}
+                  className="flex-1 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-bold text-xs"
+                >
+                  Log In
+                </button>
+                <button
+                  onClick={() => setCurrentView('landing')}
+                  className="flex-1 py-2.5 bg-slate-900 border border-slate-800 text-slate-300 rounded-xl font-semibold text-xs"
+                >
+                  Landing Page
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      );
-    }
+        ) : (
+          <DashboardLayout
+            user={user}
+            onLogout={handleLogout}
+            onGoHome={() => setCurrentView('landing')}
+          />
+        )
+      ) : (
+        <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+          {/* Authenticated user top banner on Landing Page */}
+          {user && (
+            <div className="bg-gradient-to-r from-blue-600/20 via-indigo-600/20 to-purple-600/20 border-b border-indigo-500/30 px-4 py-2 text-center text-xs font-semibold text-indigo-300 flex items-center justify-center space-x-2">
+              <span>Logged in as <strong>{user.name}</strong></span>
+              <span>•</span>
+              <button
+                onClick={() => setCurrentView('dashboard')}
+                className="underline font-bold hover:text-white transition-colors"
+              >
+                Go to Student Dashboard →
+              </button>
+            </div>
+          )}
 
-    return (
-      <DashboardLayout
-        user={user}
-        onLogout={handleLogout}
-        onGoHome={() => setCurrentView('landing')}
-      />
-    );
-  }
+          {/* Navigation Header */}
+          <Navbar
+            onOpenAuth={handleOpenAuth}
+            user={user}
+            onLogout={handleLogout}
+          />
 
-  return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
-      
-      {/* Authenticated user top banner on Landing Page */}
-      {user && (
-        <div className="bg-gradient-to-r from-blue-600/20 via-indigo-600/20 to-purple-600/20 border-b border-indigo-500/30 px-4 py-2 text-center text-xs font-semibold text-indigo-300 flex items-center justify-center space-x-2">
-          <span>Logged in as <strong>{user.name}</strong></span>
-          <span>•</span>
-          <button
-            onClick={() => setCurrentView('dashboard')}
-            className="underline font-bold hover:text-white transition-colors"
-          >
-            Go to Student Dashboard →
-          </button>
+          {/* Main Landing Sections */}
+          <main className="flex-1">
+            <Hero onOpenAuth={handleOpenAuth} />
+            <Features />
+            <LiveDemo />
+            <HowItWorks />
+            <Testimonials />
+            <HealthStatus
+              health={health}
+              loading={loadingHealth}
+              error={healthError}
+              onRefresh={fetchStatus}
+            />
+          </main>
+
+          {/* Footer */}
+          <Footer />
+
+          {/* Auth Pop-up Modal */}
+          <AuthModal
+            isOpen={authModalOpen}
+            initialMode={authMode}
+            onClose={() => setAuthModalOpen(false)}
+            onSuccess={handleAuthSuccess}
+          />
         </div>
       )}
-
-      {/* Navigation Header */}
-      <Navbar
-        onOpenAuth={handleOpenAuth}
-        user={user}
-        onLogout={handleLogout}
-      />
-
-      {/* Main Landing Sections */}
-      <main className="flex-1">
-        <Hero onOpenAuth={handleOpenAuth} />
-        <Features />
-        <LiveDemo />
-        <HowItWorks />
-        <Testimonials />
-        <HealthStatus
-          health={health}
-          loading={loadingHealth}
-          error={healthError}
-          onRefresh={fetchStatus}
-        />
-      </main>
-
-      {/* Footer */}
-      <Footer />
-
-      {/* Auth Pop-up Modal */}
-      <AuthModal
-        isOpen={authModalOpen}
-        initialMode={authMode}
-        onClose={() => setAuthModalOpen(false)}
-        onSuccess={handleAuthSuccess}
-      />
-    </div>
+    </>
   );
 };
 

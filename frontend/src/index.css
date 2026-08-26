@@ -108,3 +108,40 @@
 .animate-pulse-glow {
   animation: pulseGlow 6s ease-in-out infinite;
 }
+
+@keyframes floatPulse {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    filter: drop-shadow(0 10px 20px rgba(99, 102, 241, 0.25));
+  }
+  50% {
+    transform: translateY(-8px) scale(1.03);
+    filter: drop-shadow(0 20px 30px rgba(99, 102, 241, 0.45));
+  }
+}
+
+.animate-float-pulse {
+  animation: floatPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes dotBounce {
+  0%, 80%, 100% {
+    opacity: 0.25;
+    transform: scale(0.75);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+.animate-dot-1 {
+  animation: dotBounce 1.4s infinite ease-in-out 0s;
+}
+.animate-dot-2 {
+  animation: dotBounce 1.4s infinite ease-in-out 0.2s;
+}
+.animate-dot-3 {
+  animation: dotBounce 1.4s infinite ease-in-out 0.4s;
+}
+
