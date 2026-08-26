@@ -37,9 +37,12 @@ async def apply_for_job(
     if not job:
         raise ValueError(f"Job with ID '{job_id}' not found.")
 
+    if job.get("status") == "Closed":
+        raise ValueError("This placement position is closed and is no longer accepting new applications.")
+
     # 3. Retrieve Candidate Profile Data & Latest ATS Score
-    user_skills = user.get("skills", ["Python", "FastAPI", "React", "MongoDB"])
-    user_degree = user.get("degree", "B.S. Computer Science")
+    user_skills = user.get("skills") or ["Python", "FastAPI", "React", "MongoDB"]
+    user_degree = user.get("degree") or "B.S. Computer Science"
 
     ats_score = 75
     if db is not None:
