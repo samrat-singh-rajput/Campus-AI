@@ -22,28 +22,32 @@ def _extract_features(
     required_skills: List[str],
     preferred_degree: str | None = None
 ) -> Tuple[np.ndarray, List[str], List[str], float]:
-    """Extracts 5 numerical features for Random Forest ML model classification."""
-    cand_skills_lower = set(s.lower() for s in candidate_skills)
-    req_skills_lower = set(s.lower() for s in required_skills)
+    safe_cand_skills = [s for s in (candidate_skills or []) if s]
+    safe_req_skills = [s for s in (required_skills or []) if s]
+    safe_cand_degree = (candidate_degree or "").strip()
+    safe_pref_degree = (preferred_degree or "").strip()
+
+    cand_skills_lower = set(s.lower() for s in safe_cand_skills)
+    req_skills_lower = set(s.lower() for s in safe_req_skills)
 
     if not req_skills_lower:
-        matched = list(candidate_skills)
+        matched = list(safe_cand_skills)
         missing = []
         ratio = 1.0
     else:
         matched_lower = cand_skills_lower.intersection(req_skills_lower)
         missing_lower = req_skills_lower - cand_skills_lower
         
-        matched = [s for s in required_skills if s.lower() in matched_lower]
-        missing = [s for s in required_skills if s.lower() in missing_lower]
+        matched = [s for s in safe_req_skills if s.lower() in matched_lower]
+        missing = [s for s in safe_req_skills if s.lower() in missing_lower]
         ratio = len(matched_lower) / len(req_skills_lower)
 
     # Degree alignment check
     degree_fit = 1.0
-    if preferred_degree and preferred_degree.strip():
-        if preferred_degree.lower() in candidate_degree.lower():
+    if safe_pref_degree and safe_cand_degree:
+        if safe_pref_degree.lower() in safe_cand_degree.lower():
             degree_fit = 1.0
-        elif "computer" in candidate_degree.lower() or "science" in candidate_degree.lower():
+        elif "computer" in safe_cand_degree.lower() or "science" in safe_cand_degree.lower():
             degree_fit = 0.8
         else:
             degree_fit = 0.5
