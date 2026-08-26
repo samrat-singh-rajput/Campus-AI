@@ -147,23 +147,35 @@ async def evaluate_user_recommendations(user: Dict[str, Any]) -> List[Dict[str, 
     evaluated_jobs = []
 
     for job in all_jobs:
-        job_id = job["id"]
-        eval_result = evaluate_job_eligibility(
-            candidate_skills=user_skills,
-            candidate_degree=user_degree,
-            ats_score=ats_score,
-            job_id=job_id,
-            job_title=job["title"],
-            company=job["company"],
-            required_skills=job.get("required_skills", []),
-            preferred_degree=job.get("preferred_degree")
-        )
-        
-        job_with_match = {
-            **job,
-            "match_result": eval_result
-        }
-        evaluated_jobs.append(job_with_match)
+        try:
+            job_id = str(job.get("id", job.get("_id", "")))
+            eval_result = evaluate_job_eligibility(
+                candidate_skills=user_skills,
+                candidate_degree=user_degree,
+                ats_score=ats_score,
+                job_id=job_id,
+                job_title=job.get("title", "Position Role"),
+                company=job.get("company", "Company"),
+                required_skills=job.get("required_skills", []),
+                preferred_degree=job.get("preferred_degree")
+            )
+            
+            job_with_match = {
+                **job,
+                "match_result": eval_result
+            }
+            evaluated_jobs.append(job_with_match)
+        except Exception as err:
+            logger.warning(f"Error evaluating job {job.get('title')}: {err}")
+            evaluated_jobs.append({
+                **job,
+                "match_result": {
+                    "eligibility_score": 70,
+                    "matched_skills": [],
+                    "missing_skills": [],
+                    "recommendation": "Moderate Fit"
+                }
+            })
 
     # Sort jobs by Scikit-Learn Random Forest eligibility score descending
     evaluated_jobs.sort(key=lambda x: x["match_result"]["eligibility_score"], reverse=True)
