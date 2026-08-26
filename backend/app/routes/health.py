@@ -40,9 +40,12 @@ async def check_overall_health():
 @router.get("/db", status_code=status.HTTP_200_OK)
 async def check_mongodb_health():
     """Specific endpoint to check MongoDB Atlas connectivity."""
+    target_host = settings.MONGODB_URI.split("@")[-1] if "@" in settings.MONGODB_URI else "localhost"
     return {
         "mongodb_connected": db_instance.is_connected,
         "status": db_instance.connection_status,
+        "database_name": settings.MONGODB_DB_NAME,
+        "target_host": target_host,
         "uri_configured": bool(settings.MONGODB_URI)
     }
 

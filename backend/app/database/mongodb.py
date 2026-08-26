@@ -29,11 +29,14 @@ async def connect_to_mongo():
         # Test connection ping
         await db_instance.client.admin.command('ping')
         db_instance.is_connected = True
-        db_instance.connection_status = "Connected to MongoDB Atlas"
-        logger.info("Successfully connected to MongoDB Atlas!")
+        if "mongodb.net" in uri or "+srv" in uri:
+            db_instance.connection_status = "Connected to MongoDB Atlas"
+        else:
+            db_instance.connection_status = "Connected to Local MongoDB"
+        logger.info(f"Successfully connected to MongoDB! ({db_instance.connection_status})")
     except Exception as e:
         db_instance.is_connected = False
-        db_instance.connection_status = f"MongoDB connection pending/offline ({str(e)})"
+        db_instance.connection_status = f"MongoDB connection failed ({str(e)})"
         logger.warning(f"MongoDB connection warning: {e}. App will start with fallback capabilities.")
 
 async def close_mongo_connection():
