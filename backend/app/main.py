@@ -7,6 +7,7 @@ from app.database.mongodb import connect_to_mongo, close_mongo_connection
 from app.database.chromadb import init_chromadb
 from app.routes.health import router as health_router
 from app.routes.auth import router as auth_router
+from app.routes.admin import router as admin_router
 from app.routes.resume import router as resume_router
 from app.routes.rag import router as rag_router
 from app.routes.jobs import router as jobs_router
@@ -59,6 +60,7 @@ app.add_middleware(
 # Include Routers
 app.include_router(health_router)
 app.include_router(auth_router)
+app.include_router(admin_router)
 app.include_router(resume_router)
 app.include_router(rag_router)
 app.include_router(jobs_router)
