@@ -8,7 +8,6 @@ import {
   Mic, 
   TrendingUp, 
   Settings, 
-  Sparkles, 
   LogOut, 
   X, 
   ChevronRight
@@ -76,10 +75,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
               className="flex items-center space-x-3 text-left group"
             >
               <img
-                src="/logo.png"
-                alt="CampusMate AI Logo"
-                className="h-[52px] sm:h-[56px] lg:h-[58px] w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200"
+                src="/logo-icon.png"
+                alt="CampusMate AI Emblem"
+                className="h-[44px] sm:h-[50px] lg:h-[54px] w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200"
               />
+              <div>
+                <span className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+                  CampusMate AI
+                </span>
+                <p className="text-[10px] text-slate-400 font-medium">Student Dashboard</p>
+              </div>
             </button>
 
             {/* Mobile Close Button */}

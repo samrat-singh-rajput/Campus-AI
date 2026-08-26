@@ -1,20 +1,23 @@
 import React from 'react';
-import { Sparkles, Heart, Globe, Share2, MessageSquare, Mail } from 'lucide-react';
+import { Heart, Globe, Share2, MessageSquare, Mail } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
     <footer className="border-t border-slate-800/80 bg-slate-950 text-slate-400 py-16 text-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
-          
+
           {/* Brand Col */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center space-x-3">
               <img
-                src="/logo.png"
-                alt="CampusMate AI Logo"
-                className="h-[42px] sm:h-[48px] w-auto object-contain drop-shadow-md"
+                src="/logo-icon.png"
+                alt="CampusMate AI Emblem"
+                className="h-[38px] sm:h-[44px] w-auto object-contain drop-shadow-md"
               />
+              <span className="text-xl font-extrabold text-white tracking-tight">
+                CampusMate AI
+              </span>
             </div>
             <p className="text-slate-400 max-w-sm leading-relaxed text-xs">
               CampusMate AI is a production-quality full-stack AI career platform. Empowering students with ATS resume optimization, ML job matching, AI mock interviews, and application tracking.

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Menu, X, ArrowRight, LogIn } from 'lucide-react';
+import { Menu, X, ArrowRight, LogIn } from 'lucide-react';
 
 interface NavbarProps {
   onOpenAuth: (mode: 'login' | 'register') => void;
@@ -18,13 +18,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAuth, user, onLogout }) =>
           {/* Logo Branding */}
           <a href="#" className="flex items-center space-x-3 group">
             <img
-              src="/logo.png"
-              alt="CampusMate AI Logo"
-              className="h-[38px] sm:h-[44px] md:h-[48px] lg:h-[50px] w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200"
+              src="/logo-icon.png"
+              alt="CampusMate AI Emblem"
+              className="h-[40px] sm:h-[46px] lg:h-[50px] w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200"
             />
-            <span className="bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider hidden sm:inline-block">
-              v1.0
-            </span>
+            <div>
+              <div className="flex items-center space-x-2">
+                <span className="text-xl sm:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+                  CampusMate AI
+                </span>
+                <span className="bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider hidden sm:inline-block">
+                  v1.0
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-400 font-medium tracking-wide">Your AI Career Companion</p>
+            </div>
           </a>
 
           {/* Desktop Navigation Links */}
