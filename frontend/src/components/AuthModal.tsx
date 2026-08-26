@@ -96,11 +96,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, initialMode = 'log
 
         {/* Modal Header */}
         <div className="text-center mb-6">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 p-0.5 shadow-lg shadow-indigo-500/20 mx-auto mb-3">
-            <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
-              <Sparkles className="w-6 h-6 text-indigo-400" />
-            </div>
-          </div>
+          <img
+            src="/logo.png"
+            alt="CampusMate AI Logo"
+            className="h-[84px] sm:h-[96px] w-auto mx-auto mb-3 object-contain drop-shadow-xl animate-float-pulse"
+          />
           <h3 className="text-2xl font-extrabold text-white">
             {mode === 'login' ? 'Welcome Back!' : 'Join CampusMate AI'}
           </h3>

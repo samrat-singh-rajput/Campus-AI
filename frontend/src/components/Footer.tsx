@@ -10,14 +10,11 @@ export const Footer: React.FC = () => {
           {/* Brand Col */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-purple-600 p-0.5 shadow-md">
-                <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                  <Sparkles className="w-4 h-4 text-indigo-400" />
-                </div>
-              </div>
-              <span className="text-lg font-extrabold text-white tracking-tight">
-                CampusMate AI
-              </span>
+              <img
+                src="/logo.png"
+                alt="CampusMate AI Logo"
+                className="h-[42px] sm:h-[48px] w-auto object-contain drop-shadow-md"
+              />
             </div>
             <p className="text-slate-400 max-w-sm leading-relaxed text-xs">
               CampusMate AI is a production-quality full-stack AI career platform. Empowering students with ATS resume optimization, ML job matching, AI mock interviews, and application tracking.
