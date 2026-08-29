@@ -1733,7 +1733,7 @@ async def get_admin_resumes_list(
             total_pages=total_pages,
             resumes=resumes_list
         )
-
+    except Exception as e:
         logger.error(f"Error fetching admin resumes list: {e}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
@@ -2920,10 +2920,10 @@ async def change_admin_password_route(
         )
 
     # Validate Strength Requirements
-    if len(new_pwd) < 8:
+    if len(new_pwd) < 6:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Password does not meet the security requirements. Minimum length is 8 characters."
+            detail="Password does not meet the security requirements. Minimum length is 6 characters."
         )
 
     # Hash new password securely using bcrypt
@@ -2945,3 +2945,4 @@ async def change_admin_password_route(
         "status": "success",
         "message": "Admin password changed successfully."
     }
+# Reload settings checkpoint

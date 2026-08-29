@@ -2,7 +2,8 @@ import logging
 from datetime import datetime, timezone
 from typing import Optional, Dict, Any
 from bson import ObjectId
-from app.database.mongodb import db_instance
+from app.config.settings import settings
+from app.database.mongodb import db_instance, get_database_async
 from app.schemas.user import UserRegister
 from app.services.security import hash_password
 
@@ -24,32 +25,36 @@ def _format_user_doc(doc: Dict[str, Any]) -> Dict[str, Any]:
 async def get_user_by_email(email: str) -> Optional[Dict[str, Any]]:
     """Retrieves user by email address."""
     email_clean = email.strip().lower()
+    db = await get_database_async()
     
-    if db_instance.is_connected and db_instance.db is not None:
+    if db is not None:
         try:
-            doc = await db_instance.db.users.find_one({"email": email_clean})
+            doc = await db.users.find_one({"email": email_clean})
             if doc:
+                logger.info(f"Retrieved user by email from MongoDB Atlas: {email_clean}")
                 return doc
         except Exception as e:
-            logger.error(f"Error querying user by email in MongoDB: {e}")
+            logger.error(f"Error querying user by email in MongoDB Atlas ({email_clean}): {e}")
             
     # Check fallback memory store
     for uid, user in _memory_users.items():
         if user.get("email") == email_clean:
+            logger.info(f"Retrieved user by email from fallback memory store: {email_clean}")
             return user
             
     return None
 
 async def get_user_by_id(user_id: str) -> Optional[Dict[str, Any]]:
     """Retrieves user by ID."""
-    if db_instance.is_connected and db_instance.db is not None:
+    db = await get_database_async()
+    if db is not None:
         try:
             if ObjectId.is_valid(user_id):
-                doc = await db_instance.db.users.find_one({"_id": ObjectId(user_id)})
+                doc = await db.users.find_one({"_id": ObjectId(user_id)})
                 if doc:
                     return doc
         except Exception as e:
-            logger.error(f"Error querying user by ID in MongoDB: {e}")
+            logger.error(f"Error querying user by ID in MongoDB Atlas: {e}")
             
     # Check fallback memory store
     if user_id in _memory_users:
@@ -71,22 +76,28 @@ async def create_user(user_in: UserRegister) -> Dict[str, Any]:
         "degree": user_in.degree.strip() if user_in.degree else None,
         "graduationYear": user_in.graduationYear,
         "skills": user_in.skills or [],
+        "status": "Active",
         "createdAt": now,
         "updatedAt": now
     }
     
-    if db_instance.is_connected and db_instance.db is not None:
+    db_name = settings.MONGODB_DB_NAME
+    collection_name = "users"
+    db = await get_database_async()
+    
+    if db is not None:
         try:
-            result = await db_instance.db.users.insert_one(user_doc)
+            logger.info(f"Registration: inserting user into database={db_name} collection={collection_name}")
+            result = await db.users.insert_one(user_doc)
             user_doc["_id"] = result.inserted_id
-            logger.info(f"User created in MongoDB Atlas: {email_clean} (ID: {result.inserted_id})")
+            logger.info(f"Registration successful: inserted into database={db_name} collection={collection_name} inserted_id={result.inserted_id}")
             return user_doc
         except Exception as e:
-            logger.error(f"Failed to insert user into MongoDB Atlas: {e}")
+            logger.error(f"Failed to insert user into database={db_name} collection={collection_name}: {e}")
             
-    # Fallback storage
+    # Fallback storage if MongoDB Atlas is disconnected
     fake_id = str(ObjectId())
     user_doc["_id"] = fake_id
     _memory_users[fake_id] = user_doc
-    logger.info(f"User stored in fallback storage: {email_clean} (ID: {fake_id})")
+    logger.warning(f"WARNING: MongoDB Atlas disconnected. User stored in fallback memory storage: email={email_clean} inserted_id={fake_id}")
     return user_doc
