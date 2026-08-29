@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-slate-400 max-w-sm leading-relaxed text-xs">
-              CampusMate AI is a production-quality full-stack AI career platform. Empowering students with ATS resume optimization, ML job matching, AI mock interviews, and application tracking.
+              CampusMate AI is a production-quality full-stack AI career platform. Empowering students with ATS resume optimization, AI job matching, mock interview coaching, and application tracking.
             </p>
             <div className="flex items-center space-x-4 pt-2 text-slate-400">
               <a href="#" className="hover:text-white transition-colors" aria-label="Website"><Globe className="w-4 h-4" /></a>
@@ -38,25 +38,25 @@ export const Footer: React.FC = () => {
               <li><a href="#demo" className="hover:text-indigo-400 transition-colors">AI Job Matcher Simulator</a></li>
               <li><a href="#features" className="hover:text-indigo-400 transition-colors">AI Mock Interview Coach</a></li>
               <li><a href="#features" className="hover:text-indigo-400 transition-colors">Application Kanban Board</a></li>
-              <li><a href="#features" className="hover:text-indigo-400 transition-colors">LangGraph AI Assistant</a></li>
+              <li><a href="#features" className="hover:text-indigo-400 transition-colors">AI Career Assistant</a></li>
             </ul>
           </div>
 
           {/* Platform Status */}
           <div className="md:col-span-4 space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider">Architecture Stack</h4>
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 space-y-2 text-[11px] font-mono">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider">Platform System Status</h4>
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 space-y-2 text-[11px]">
               <div className="flex justify-between">
-                <span className="text-slate-500">Frontend:</span>
-                <span className="text-slate-300">React 19 + Vite + Tailwind v4</span>
+                <span className="text-slate-500">Core Services:</span>
+                <span className="text-emerald-400 font-semibold">Active & Operational</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Backend:</span>
-                <span className="text-slate-300">Python FastAPI + JWT</span>
+                <span className="text-slate-500">AI Match Engine:</span>
+                <span className="text-emerald-400 font-semibold">Fully Available</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Databases:</span>
-                <span className="text-emerald-400">MongoDB Atlas + ChromaDB</span>
+                <span className="text-slate-500">Data Security:</span>
+                <span className="text-indigo-300 font-semibold">Enterprise Encryption</span>
               </div>
             </div>
           </div>

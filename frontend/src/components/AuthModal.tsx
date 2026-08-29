@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, LogIn, UserPlus, AlertCircle, CheckCircle2, Lock, Mail, User } from 'lucide-react';
 import { loginUser, registerUser } from '../services/authService';
+import { getErrorMessage } from '../services/api';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -25,6 +26,18 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, initialMode = 'log
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
+  // Lock background page scrolling while auth modal is active
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -35,7 +48,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, initialMode = 'log
     // Front-end 72-byte UTF-8 password length validation
     const pwdBytes = new TextEncoder().encode(password).length;
     if (pwdBytes > 72) {
-      setErrorMessage('Password exceeds maximum allowed 72 bytes in UTF-8 encoding.');
+      setErrorMessage('Password is too long. Please use a shorter password.');
       return;
     }
 
@@ -74,34 +87,38 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, initialMode = 'log
         }, 600);
       }
     } catch (err: any) {
-      setErrorMessage(err.message || 'Authentication request failed. Ensure backend is online.');
+      setErrorMessage(getErrorMessage(err, mode));
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn overflow-y-auto"
+      onClick={onClose}
+    >
       <div
-        className="glass-card w-full max-w-md rounded-3xl border border-slate-800 p-6 sm:p-8 shadow-2xl relative glow-border overflow-hidden"
+        className="glass-card w-full max-w-md rounded-3xl border border-slate-800 p-5 sm:p-7 shadow-2xl relative glow-border max-h-[90vh] overflow-y-auto bg-slate-950/95 my-auto flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white bg-slate-900 border border-slate-800 transition-colors"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-xl text-slate-400 hover:text-white bg-slate-900 border border-slate-800 transition-colors z-10"
+          aria-label="Close modal"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
 
         {/* Modal Header */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-4 sm:mb-5 pr-6 pl-2">
           <img
             src="/logo.png"
             alt="CampusMate AI Logo"
-            className="h-[84px] sm:h-[96px] w-auto mx-auto mb-3 object-contain drop-shadow-xl animate-float-pulse"
+            className="h-[64px] sm:h-[80px] w-auto mx-auto mb-2 object-contain drop-shadow-xl animate-float-pulse"
           />
-          <h3 className="text-2xl font-extrabold text-white">
+          <h3 className="text-xl sm:text-2xl font-extrabold text-white">
             {mode === 'login' ? 'Welcome Back!' : 'Join CampusMate AI'}
           </h3>
           <p className="text-xs text-slate-400 mt-1">
@@ -110,7 +127,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, initialMode = 'log
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex bg-slate-900 p-1 rounded-2xl border border-slate-800 mb-6">
+        <div className="flex bg-slate-900 p-1 rounded-2xl border border-slate-800 mb-4 sm:mb-5">
           <button
             onClick={() => { setMode('login'); setErrorMessage(null); }}
             className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all flex items-center justify-center space-x-1.5 ${
@@ -151,7 +168,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, initialMode = 'log
         )}
 
         {/* Auth Form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
           
           {mode === 'register' && (
             <div>
@@ -254,7 +271,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, initialMode = 'log
           </button>
         </form>
 
-        <p className="text-center text-[11px] text-slate-500 mt-5">
+        <p className="text-center text-[11px] text-slate-500 mt-4 sm:mt-5 pb-1">
           Protected with bcrypt hashing & signed JWT encryption.
         </p>
 
