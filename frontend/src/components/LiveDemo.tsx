@@ -11,23 +11,23 @@ const ROLES: JobRole[] = [
   {
     id: 'fs',
     title: 'Full Stack Engineer',
-    requiredSkills: ['Python', 'FastAPI', 'React', 'TypeScript', 'MongoDB', 'Docker', 'REST APIs']
+    requiredSkills: ['Python', 'Web APIs', 'React', 'TypeScript', 'Cloud Databases', 'System Architecture']
   },
   {
     id: 'ai',
     title: 'AI / ML Engineer',
-    requiredSkills: ['Python', 'PyTorch', 'LangChain', 'ChromaDB', 'Scikit-Learn', 'FastAPI', 'Vector Embeddings']
+    requiredSkills: ['Python', 'PyTorch', 'Vector Search', 'Machine Learning', 'Data Pipelines', 'AI Algorithms']
   },
   {
     id: 'de',
     title: 'Data Engineer',
-    requiredSkills: ['Python', 'SQL', 'MongoDB', 'Apache Spark', 'Docker', 'FastAPI', 'Data Pipelines']
+    requiredSkills: ['Python', 'SQL', 'Data Modeling', 'Apache Spark', 'Docker', 'ETL Pipelines']
   }
 ];
 
 export const LiveDemo: React.FC = () => {
   const [selectedRoleId, setSelectedRoleId] = useState<string>('fs');
-  const [userSkills, setUserSkills] = useState<string[]>(['Python', 'FastAPI', 'React', 'TypeScript']);
+  const [userSkills, setUserSkills] = useState<string[]>(['Python', 'Web APIs', 'React', 'TypeScript']);
   const [customSkillInput, setCustomSkillInput] = useState<string>('');
 
   const currentRole = ROLES.find(r => r.id === selectedRoleId) || ROLES[0];
@@ -74,7 +74,7 @@ export const LiveDemo: React.FC = () => {
             Try the Interactive <span className="gradient-text">ATS & Job Matcher</span>
           </h2>
           <p className="text-base sm:text-lg text-slate-400 leading-relaxed font-normal">
-            Select a target role and check off your skills to test the Random Forest match algorithm logic in real time!
+            Select a target role and check off your skills to test the smart match algorithm logic in real time!
           </p>
         </div>
 
@@ -210,7 +210,7 @@ export const LiveDemo: React.FC = () => {
                   className="w-full py-2.5 bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 text-indigo-300 rounded-xl text-xs font-bold flex items-center justify-center space-x-2 transition-colors"
                 >
                   <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-                  <span>Full Engine Connected to API</span>
+                  <span>Full Match Engine Ready</span>
                 </a>
               </div>
 
