@@ -19,7 +19,7 @@ export const HowItWorks: React.FC = () => {
       number: '03',
       icon: Target,
       title: 'Job Matching & Eligibility',
-      description: 'Our Random Forest ML engine scores your profile against active job postings, highlighting exact skill gaps you need to bridge.'
+      description: 'Our AI match engine scores your profile against active job postings, highlighting exact skill gaps you need to bridge.'
     },
     {
       number: '04',
