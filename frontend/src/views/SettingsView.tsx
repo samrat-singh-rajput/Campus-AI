@@ -157,15 +157,15 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ user, onBackToDashbo
           </div>
         </div>
 
-        {/* Skill Vector Manager */}
+        {/* Skill Manager */}
         <div className="glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6 glow-border">
           <div>
             <h3 className="text-base font-bold text-white flex items-center space-x-2">
               <BrainCircuit className="w-4 h-4 text-indigo-400" />
-              <span>Verified Skill Vector Manager</span>
+              <span>Verified Candidate Skills</span>
             </h3>
             <p className="text-xs text-slate-400 mt-1">
-              Add or manage skills used by Scikit-Learn Random Forest and ChromaDB for job recommendations.
+              Add or manage skills used for career and job recommendations.
             </p>
           </div>
 
@@ -216,7 +216,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ user, onBackToDashbo
           className="w-full py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-2xl font-bold text-xs shadow-lg shadow-indigo-500/20 flex items-center justify-center space-x-2 transition-all"
         >
           {loading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
-          <span>Save Profile & Skill Vector Updates</span>
+          <span>Save Profile Updates</span>
         </button>
 
       </form>
@@ -225,12 +225,12 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ user, onBackToDashbo
       <div className="glass-card rounded-3xl p-6 border border-slate-800 space-y-4 glow-border">
         <h3 className="text-sm font-bold text-white flex items-center space-x-2">
           <ShieldCheck className="w-4 h-4 text-emerald-400" />
-          <span>CampusMate AI Infrastructure Status</span>
+          <span>CampusMate AI Platform Status</span>
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
           <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between">
-            <span className="text-slate-400">MongoDB Atlas DB</span>
+            <span className="text-slate-400">Primary Data Storage</span>
             <span className="text-emerald-400 font-bold flex items-center space-x-1">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <span>Connected</span>
@@ -238,7 +238,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ user, onBackToDashbo
           </div>
 
           <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between">
-            <span className="text-slate-400">ChromaDB Vector Store</span>
+            <span className="text-slate-400">AI Search Index</span>
             <span className="text-emerald-400 font-bold flex items-center space-x-1">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <span>Initialized</span>
@@ -246,10 +246,10 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ user, onBackToDashbo
           </div>
 
           <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between">
-            <span className="text-slate-400">Scikit-Learn ML Engine</span>
+            <span className="text-slate-400">Match Classifier</span>
             <span className="text-emerald-400 font-bold flex items-center space-x-1">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>Trained (95.8%)</span>
+              <span>Active & Ready</span>
             </span>
           </div>
         </div>

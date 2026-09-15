@@ -111,12 +111,12 @@ export const ApplicationsView: React.FC<ApplicationsViewProps> = ({
           <h2 className="text-xl font-extrabold text-white flex items-center space-x-2">
             <Kanban className="w-5 h-5 text-indigo-400" />
             <span>Campus Drive Application Pipeline</span>
-            <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-800 text-indigo-400 font-mono">
-              Dual Match Pipeline
+            <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-800 text-indigo-400 font-sans">
+              Pipeline Active
             </span>
           </h2>
           <p className="text-xs text-slate-400 mt-1">
-            Tracks submitted applications with Dual Match Scoring (60% Random Forest ML + 40% ChromaDB Vector Search).
+            Tracks submitted applications with AI Match scoring.
           </p>
         </div>
 
@@ -176,7 +176,7 @@ export const ApplicationsView: React.FC<ApplicationsViewProps> = ({
                         {/* Dual Match Score Tag */}
                         <div className="bg-slate-950 p-2 rounded-xl border border-slate-800/80 space-y-1">
                           <div className="flex items-center justify-between text-[11px]">
-                            <span className="text-slate-400 font-medium">Dual Match Score:</span>
+                            <span className="text-slate-400 font-medium">Match Fit Score:</span>
                             <span className="font-extrabold text-emerald-400">{app.combined_match_score}%</span>
                           </div>
                           <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
@@ -185,8 +185,8 @@ export const ApplicationsView: React.FC<ApplicationsViewProps> = ({
                               style={{ width: `${app.combined_match_score}%` }}
                             ></div>
                           </div>
-                          <p className="text-[9px] text-slate-500 font-mono text-right pt-0.5">
-                            ML: {app.ml_eligibility_score}% • Vector: {app.vector_similarity_score}%
+                          <p className="text-[9px] text-slate-500 font-sans text-right pt-0.5">
+                            AI Score Breakdown
                           </p>
                         </div>
 

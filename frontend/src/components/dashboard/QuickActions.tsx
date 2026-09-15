@@ -12,16 +12,16 @@ export const QuickActions: React.FC<QuickActionsProps> = ({ onSelectTab }) => {
       title: 'Upload & Parse Resume',
       subtitle: 'Extract skills & compute ATS compatibility score',
       icon: FileUp,
-      badge: 'PyPDF Parser',
+      badge: 'ATS Parser',
       color: 'from-blue-600 to-indigo-600',
       btnText: 'Upload Resume'
     },
     {
       id: 'jobs',
       title: 'Check Job Eligibility',
-      subtitle: 'Classify skills with Random Forest ML model',
+      subtitle: 'Classify skills and predict job fit',
       icon: Target,
-      badge: 'Random Forest ML',
+      badge: 'AI Matcher',
       color: 'from-indigo-600 to-purple-600',
       btnText: 'Match Jobs'
     },
@@ -36,12 +36,12 @@ export const QuickActions: React.FC<QuickActionsProps> = ({ onSelectTab }) => {
     },
     {
       id: 'assistant',
-      title: 'Ask LangGraph Agent',
-      subtitle: 'Multi-tool career RAG assistant',
+      title: 'Ask AI Career Assistant',
+      subtitle: 'Multi-tool career guidance assistant',
       icon: Bot,
-      badge: 'LangGraph Agent',
+      badge: 'AI Assistant',
       color: 'from-emerald-600 to-teal-600',
-      btnText: 'Open Agent'
+      btnText: 'Open Assistant'
     }
   ];
 

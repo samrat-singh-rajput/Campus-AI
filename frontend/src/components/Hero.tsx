@@ -27,7 +27,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAuth }) => {
               </span>
               <Sparkles className="w-4 h-4 text-indigo-400" />
               <span className="text-xs sm:text-sm font-semibold text-slate-200">
-                Next-Gen Full-Stack AI Career Platform
+                Next-Gen AI Career Platform for Students
               </span>
             </div>
 
@@ -39,7 +39,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAuth }) => {
 
             {/* Subtitle */}
             <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              CampusMate AI helps college students and fresh graduates analyze resumes against ATS algorithms, calculate machine learning job eligibility scores, practice real-time AI mock interviews, and organize job applications seamlessly.
+              CampusMate AI helps college students and fresh graduates analyze resumes against ATS filters, evaluate career job eligibility scores, practice real-time AI mock interviews, and manage job applications seamlessly.
             </p>
 
             {/* CTA Buttons */}
@@ -71,17 +71,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAuth }) => {
               </div>
               <div className="flex items-center space-x-1.5">
                 <Shield className="w-4 h-4 text-indigo-400" />
-                <span>JWT Encrypted</span>
+                <span>Secure Account & Data</span>
               </div>
               <div className="flex items-center space-x-1.5">
                 <Zap className="w-4 h-4 text-amber-400" />
-                <span>FastAPI + MongoDB Atlas</span>
+                <span>Real-Time AI Analysis</span>
               </div>
             </div>
 
           </div>
 
-          {/* Right Hero Column: Interactive Animated Showcase Card */}
+          {/* Right Hero Column: Interactive Showcase Card */}
           <div className="lg:col-span-5 relative">
             <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-800 relative glow-border animate-float">
               
@@ -93,11 +93,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAuth }) => {
                   </div>
                   <div>
                     <h3 className="text-base font-bold text-white">Live Resume Analysis</h3>
-                    <p className="text-xs text-slate-400">Software Engineer Resume #2026</p>
+                    <p className="text-xs text-slate-400">Software Engineer Candidate Profile</p>
                   </div>
                 </div>
                 <span className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs px-3 py-1 rounded-full font-bold">
-                  Demo Score: 94%
+                  ATS Score: 94%
                 </span>
               </div>
 
@@ -107,7 +107,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAuth }) => {
                 {/* Score Progress Bar */}
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs font-semibold">
-                    <span className="text-slate-300">Sample ATS Keyword Match</span>
+                    <span className="text-slate-300">ATS Keyword Fit Score</span>
                     <span className="text-emerald-400">94 / 100</span>
                   </div>
                   <div className="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800">
@@ -117,9 +117,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAuth }) => {
 
                 {/* Simulated Detected Skills Tags */}
                 <div className="space-y-2">
-                  <p className="text-xs font-semibold text-slate-400">Matched Core Qualifications:</p>
+                  <p className="text-xs font-semibold text-slate-400">Matched Qualifications:</p>
                   <div className="flex flex-wrap gap-2">
-                    {['Python', 'FastAPI', 'React 19', 'TypeScript', 'MongoDB', 'REST APIs', 'ChromaDB'].map((skill, idx) => (
+                    {['Python', 'Web APIs', 'React', 'TypeScript', 'Cloud Databases', 'System Architecture'].map((skill, idx) => (
                       <span
                         key={idx}
                         className="inline-flex items-center space-x-1 text-xs px-2.5 py-1 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 font-medium"
@@ -137,9 +137,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAuth }) => {
                     <Bot className="w-4 h-4 text-purple-400" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-slate-200">AI Coach Advice (Demo Output)</p>
+                    <p className="text-xs font-bold text-slate-200">AI Coach Advice</p>
                     <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-                      "Strong backend alignment! Add 1 project demonstrating Docker or Kubernetes deployment to achieve a 98% match for Senior Backend roles."
+                      "Strong technical alignment! Highlight 1 project demonstrating automated cloud deployment to reach a 98% match rating."
                     </p>
                   </div>
                 </div>
@@ -150,7 +150,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAuth }) => {
               <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500 font-medium">
                 <span className="flex items-center space-x-1.5">
                   <Target className="w-3.5 h-3.5 text-indigo-400" />
-                  <span>Random Forest ML Eligibility Verified</span>
+                  <span>Smart AI Eligibility Verified</span>
                 </span>
                 <span className="text-indigo-400 font-bold">Interactive Preview</span>
               </div>
@@ -163,20 +163,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAuth }) => {
         {/* Bottom Metrics Bar */}
         <div className="mt-20 pt-10 border-t border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div className="p-4 rounded-2xl bg-slate-900/50 border border-slate-800">
-            <div className="text-2xl font-extrabold text-white gradient-text">RAG Search</div>
-            <div className="text-xs text-slate-400 font-medium mt-1">ChromaDB Vector Store</div>
+            <div className="text-2xl font-extrabold text-white gradient-text">Smart Resume ATS</div>
+            <div className="text-xs text-slate-400 font-medium mt-1">Deep Keyword Parsing</div>
           </div>
           <div className="p-4 rounded-2xl bg-slate-900/50 border border-slate-800">
-            <div className="text-2xl font-extrabold text-white gradient-text">Random Forest</div>
-            <div className="text-xs text-slate-400 font-medium mt-1">Scikit-Learn Job Classifier</div>
+            <div className="text-2xl font-extrabold text-white gradient-text">95%+ Match Rate</div>
+            <div className="text-xs text-slate-400 font-medium mt-1">AI Eligibility Engine</div>
           </div>
           <div className="p-4 rounded-2xl bg-slate-900/50 border border-slate-800">
-            <div className="text-2xl font-extrabold text-white gradient-text">LangGraph</div>
-            <div className="text-xs text-slate-400 font-medium mt-1">Autonomous Agent Engine</div>
+            <div className="text-2xl font-extrabold text-white gradient-text">Mock AI Coach</div>
+            <div className="text-xs text-slate-400 font-medium mt-1">Real-Time Interview Prep</div>
           </div>
           <div className="p-4 rounded-2xl bg-slate-900/50 border border-slate-800">
-            <div className="text-2xl font-extrabold text-white gradient-text">JWT & MongoDB</div>
-            <div className="text-xs text-slate-400 font-medium mt-1">Encrypted Atlas Storage</div>
+            <div className="text-2xl font-extrabold text-white gradient-text">Cloud Sync</div>
+            <div className="text-xs text-slate-400 font-medium mt-1">Secure Student Portal</div>
           </div>
         </div>
 

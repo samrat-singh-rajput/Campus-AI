@@ -22,7 +22,7 @@ export const RecommendedJobs: React.FC<RecommendedJobsProps> = ({ onSelectTab })
       company: 'NextGen Intelligence',
       location: 'New York, NY (Hybrid)',
       matchScore: 89,
-      skills: ['Python', 'PyTorch', 'FastAPI', 'ChromaDB'],
+      skills: ['Python', 'PyTorch', 'Web APIs', 'Vector Search'],
       type: 'Full-time'
     },
     {
@@ -41,7 +41,7 @@ export const RecommendedJobs: React.FC<RecommendedJobsProps> = ({ onSelectTab })
       <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-800/80">
         <div className="flex items-center space-x-2">
           <Target className="w-5 h-5 text-indigo-400" />
-          <h3 className="text-base font-bold text-white">Recommended Job Matches (Demo Preview)</h3>
+          <h3 className="text-base font-bold text-white">Recommended Job Matches</h3>
         </div>
         <button
           onClick={() => onSelectTab('jobs')}

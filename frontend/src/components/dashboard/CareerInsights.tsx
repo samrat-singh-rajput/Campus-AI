@@ -61,15 +61,15 @@ export const CareerInsights: React.FC<CareerInsightsProps> = ({ user, onSelectTa
             <Bot className="w-5 h-5 text-purple-400" />
           </div>
           <div>
-            <h4 className="text-xs font-bold text-white">LangGraph AI Career Advice</h4>
+            <h4 className="text-xs font-bold text-white">AI Career Advice</h4>
             <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-              {insights?.growth_advice?.[0] || 'Upload your PDF resume in My Resume to optimize your ATS score and ML job match eligibility.'}
+              {insights?.growth_advice?.[0] || 'Upload your PDF resume in My Resume to optimize your ATS score and job match eligibility.'}
             </p>
             <button
               onClick={() => onSelectTab('assistant')}
               className="mt-3 text-xs font-bold text-purple-400 hover:text-purple-300 flex items-center space-x-1 transition-colors"
             >
-              <span>Chat with LangGraph AI Assistant</span>
+              <span>Chat with AI Career Assistant</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -77,7 +77,7 @@ export const CareerInsights: React.FC<CareerInsightsProps> = ({ user, onSelectTa
 
         {/* Current Active Skills List */}
         <div className="space-y-2">
-          <label className="text-xs font-bold uppercase tracking-wider text-slate-400">Verified Skill Vector ({userSkills.length}):</label>
+          <label className="text-xs font-bold uppercase tracking-wider text-slate-400">Verified Skills ({userSkills.length}):</label>
           <div className="flex flex-wrap gap-2">
             {userSkills.length > 0 ? (
               userSkills.map((s: string, idx: number) => (

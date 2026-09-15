@@ -86,7 +86,7 @@ export const InsightsView: React.FC<InsightsViewProps> = ({ user: _user, onBackT
                 {data.user_name}'s Placement Readiness
               </h2>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Calculated across your parsed ATS resume score, verified skill vector, Scikit-Learn Random Forest job fit, and mock interview performance.
+                Calculated across your parsed ATS resume score, verified skills, AI job match score, and mock interview performance.
               </p>
 
               <div className="flex flex-wrap gap-2 pt-2 justify-center md:justify-start">
@@ -126,7 +126,7 @@ export const InsightsView: React.FC<InsightsViewProps> = ({ user: _user, onBackT
               <p className="text-2xl font-extrabold text-white">
                 {data.ats_score ? `${data.ats_score} / 100` : 'Not analyzed'}
               </p>
-              <p className="text-[10px] text-slate-500 font-mono">PyPDF ATS Parser</p>
+              <p className="text-[10px] text-slate-500 font-sans">ATS Resume Analyzer</p>
             </div>
 
             <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-2 glow-border">
@@ -137,7 +137,7 @@ export const InsightsView: React.FC<InsightsViewProps> = ({ user: _user, onBackT
               <p className="text-2xl font-extrabold text-white">
                 {data.high_fit_jobs_count} Roles
               </p>
-              <p className="text-[10px] text-slate-500 font-mono">Random Forest ML Classifier</p>
+              <p className="text-[10px] text-slate-500 font-sans">AI Job Classifier</p>
             </div>
 
             <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-2 glow-border">

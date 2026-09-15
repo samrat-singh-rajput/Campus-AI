@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, Search, Bell, LogOut, ChevronDown, ExternalLink } from 'lucide-react';
+import { Menu, Search, Bell, LogOut, ChevronDown } from 'lucide-react';
 import { NAV_ITEMS } from './Sidebar';
 
 interface TopHeaderProps {
@@ -15,7 +15,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
   user,
   onOpenMobileMenu,
   onLogout,
-  onGoHome
+  onGoHome: _onGoHome
 }) => {
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const activeNavItem = NAV_ITEMS.find((n) => n.id === activeTab) || NAV_ITEMS[0];
@@ -63,16 +63,6 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
           />
         </div>
 
-        {/* Home Public Site Button */}
-        <button
-          onClick={onGoHome}
-          className="p-2 rounded-xl text-slate-400 hover:text-indigo-400 bg-slate-900 border border-slate-800 transition-colors hidden sm:flex items-center space-x-1.5 text-xs font-semibold"
-          title="View Landing Page"
-        >
-          <ExternalLink className="w-4 h-4" />
-          <span>Landing Page</span>
-        </button>
-
         {/* Notifications Bell */}
         <button
           className="p-2 rounded-xl text-slate-400 hover:text-white bg-slate-900 border border-slate-800 relative transition-colors"
@@ -97,38 +87,44 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
 
           {/* Profile Dropdown Menu */}
           {profileDropdownOpen && (
-            <div
-              className="absolute right-0 mt-2 w-56 glass-card rounded-2xl border border-slate-800 p-2 shadow-2xl z-50 animate-fadeIn"
-              onClick={() => setProfileDropdownOpen(false)}
-            >
-              <div className="px-3 py-2 border-b border-slate-800/80 mb-1">
-                <p className="text-xs font-bold text-white truncate">{user?.name || 'Student Account'}</p>
-                <p className="text-[10px] text-slate-400 truncate">{user?.email || 'student@campus.edu'}</p>
-              </div>
+            <>
+              {/* Invisible Backdrop overlay to dismiss dropdown when clicking outside */}
+              <div
+                className="fixed inset-0 z-40"
+                onClick={() => setProfileDropdownOpen(false)}
+              />
 
-              <div className="space-y-0.5 text-xs font-medium">
-                <button
-                  onClick={onGoHome}
-                  className="w-full text-left px-3 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-900 flex items-center justify-between"
-                >
-                  <span>View Landing Page</span>
-                  <ExternalLink className="w-3.5 h-3.5 text-slate-500" />
-                </button>
-                <div className="px-3 py-2 text-[10px] text-slate-500 font-mono">
-                  JWT Session Valid
+              <div
+                className="absolute right-0 mt-2 w-60 sm:w-64 bg-slate-950/95 backdrop-blur-xl rounded-2xl border border-slate-800 p-2.5 shadow-2xl z-50 animate-fadeIn space-y-2"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* User Info Header */}
+                <div className="px-3 py-2.5 border-b border-slate-800/80 bg-slate-900/50 rounded-xl">
+                  <p className="text-xs font-bold text-white truncate">{user?.name || 'Student Account'}</p>
+                  <p className="text-[11px] text-slate-400 truncate mt-0.5 font-medium">{user?.email || 'student@campus.edu'}</p>
+                </div>
+
+                {/* Session Indicator */}
+                <div className="px-3 py-1.5 text-[10px] text-emerald-400 font-mono bg-emerald-500/10 rounded-lg border border-emerald-500/20 flex items-center space-x-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span>Active Session</span>
+                </div>
+
+                {/* Sign Out */}
+                <div className="pt-1 border-t border-slate-800/80">
+                  <button
+                    onClick={() => {
+                      setProfileDropdownOpen(false);
+                      onLogout();
+                    }}
+                    className="w-full text-left px-3 py-2.5 rounded-xl text-rose-400 hover:bg-rose-500/10 transition-colors text-xs font-bold flex items-center space-x-2"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    <span>Sign Out</span>
+                  </button>
                 </div>
               </div>
-
-              <div className="pt-1 border-t border-slate-800/80 mt-1">
-                <button
-                  onClick={onLogout}
-                  className="w-full text-left px-3 py-2 rounded-xl text-rose-400 hover:bg-rose-500/10 text-xs font-bold flex items-center space-x-2"
-                >
-                  <LogOut className="w-4 h-4" />
-                  <span>Sign Out</span>
-                </button>
-              </div>
-            </div>
+            </>
           )}
         </div>
 

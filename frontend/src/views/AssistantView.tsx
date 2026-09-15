@@ -25,7 +25,7 @@ interface AssistantViewProps {
 
 const QUICK_PROMPTS = [
   { label: 'Analyze Resume & ATS Score', text: 'Analyze my uploaded resume, extracted skills, and ATS score.', icon: FileText },
-  { label: 'ML Job Recommendations', text: 'Recommend the top jobs matching my skill vector using Random Forest ML.', icon: Target },
+  { label: 'Job Recommendations', text: 'Recommend the top jobs matching my skills and qualifications.', icon: Target },
   { label: 'Application Status Check', text: 'What is the status of my active job applications in the pipeline?', icon: Kanban },
   { label: 'Interview Preparation Tips', text: 'Give me full stack developer technical interview preparation advice.', icon: Sparkles }
 ];
@@ -51,7 +51,7 @@ export const AssistantView: React.FC<AssistantViewProps> = ({ user, onBackToDash
     setMessages([
       {
         sender: 'agent',
-        text: `### 👋 Hi ${user?.name || 'Student'}!\nI am your **LangGraph Autonomous AI Agent & RAG Career Assistant**.\n\nI can execute real backend tools from **Steps 5–8** to analyze your resume, recommend jobs using **Scikit-Learn Random Forest**, retrieve semantic vector knowledge from **ChromaDB**, and track your active application pipeline.\n\nHow can I assist your career today?`
+        text: `### 👋 Hi ${user?.name || 'Student'}!\nI am your **AI Career Assistant**.\n\nI can analyze your resume, recommend matched job openings, provide semantic knowledge search, and help track your active application pipeline.\n\nHow can I assist your career today?`
       }
     ]);
   }, [user]);
@@ -87,7 +87,7 @@ export const AssistantView: React.FC<AssistantViewProps> = ({ user, onBackToDash
         ...prev,
         {
           sender: 'agent',
-          text: '⚠️ Sorry, I encountered an error while executing the LangGraph Agent workflow. Please try again.'
+          text: '⚠️ Sorry, I encountered an error while processing your request. Please try again.'
         }
       ]);
     } finally {
@@ -118,7 +118,7 @@ export const AssistantView: React.FC<AssistantViewProps> = ({ user, onBackToDash
             }`}
           >
             <Bot className="w-3.5 h-3.5" />
-            <span>LangGraph Agent Chat</span>
+            <span>AI Career Assistant</span>
           </button>
 
           <button
@@ -130,7 +130,7 @@ export const AssistantView: React.FC<AssistantViewProps> = ({ user, onBackToDash
             }`}
           >
             <Database className="w-3.5 h-3.5" />
-            <span>ChromaDB Vector RAG</span>
+            <span>Semantic Search Explorer</span>
           </button>
         </div>
       </div>
@@ -150,12 +150,12 @@ export const AssistantView: React.FC<AssistantViewProps> = ({ user, onBackToDash
               </div>
               <div>
                 <h3 className="text-sm font-bold text-white flex items-center space-x-2">
-                  <span>LangGraph Agent & RAG Assistant</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 font-mono font-bold">
-                    StateGraph Engine
+                  <span>AI Career Assistant</span>
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 font-sans font-bold">
+                    Smart Engine Active
                   </span>
                 </h3>
-                <p className="text-[11px] text-slate-400">Multi-Tool Autonomous StateGraph Engine</p>
+                <p className="text-[11px] text-slate-400">Autonomous Career Advisory AI</p>
               </div>
             </div>
 
@@ -196,10 +196,10 @@ export const AssistantView: React.FC<AssistantViewProps> = ({ user, onBackToDash
                       {msg.tools_used.map((tool, tIdx) => (
                         <div
                           key={tIdx}
-                          className="bg-slate-950 border border-indigo-500/30 rounded-xl p-2 text-[10px] flex items-center space-x-2 text-indigo-300 font-mono"
+                          className="bg-slate-950 border border-indigo-500/30 rounded-xl p-2 text-[10px] flex items-center space-x-2 text-indigo-300 font-sans"
                         >
                           <Wrench className="w-3 h-3 text-indigo-400 flex-shrink-0" />
-                          <span>Tool Executed: <strong>{tool.tool_name}</strong></span>
+                          <span>Action Executed: <strong>{tool.tool_name}</strong></span>
                         </div>
                       ))}
                     </div>
@@ -223,7 +223,7 @@ export const AssistantView: React.FC<AssistantViewProps> = ({ user, onBackToDash
                 </div>
                 <div className="bg-slate-900 border border-slate-800 px-4 py-3 rounded-2xl flex items-center space-x-2">
                   <RefreshCw className="w-4 h-4 animate-spin text-indigo-400" />
-                  <span>LangGraph Agent executing multi-tool workflow...</span>
+                  <span>AI Assistant is analyzing your query...</span>
                 </div>
               </div>
             )}
@@ -258,7 +258,7 @@ export const AssistantView: React.FC<AssistantViewProps> = ({ user, onBackToDash
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask LangGraph Agent about your resume, ML job recommendations, or career tips..."
+              placeholder="Ask your AI Assistant about resume feedback, job recommendations, or career prep..."
               className="flex-1 bg-slate-900 border border-slate-800 rounded-2xl px-4 py-3 text-xs text-slate-100 focus:outline-none focus:border-indigo-500"
             />
 

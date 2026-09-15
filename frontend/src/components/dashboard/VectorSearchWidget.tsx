@@ -4,7 +4,7 @@ import { searchVectorStore, fetchRAGStats, seedKnowledgeBase } from '../../servi
 import type { SearchResultItem, RAGStatsResponse } from '../../services/ragService';
 
 export const VectorSearchWidget: React.FC = () => {
-  const [queryText, setQueryText] = useState<string>('FastAPI React full stack resume ATS keywords');
+  const [queryText, setQueryText] = useState<string>('Full stack web developer skills ATS keywords');
   const [collection, setCollection] = useState<string>('campusmate_knowledge');
   const [results, setResults] = useState<SearchResultItem[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -61,12 +61,12 @@ export const VectorSearchWidget: React.FC = () => {
           </div>
           <div>
             <h3 className="text-base font-bold text-white flex items-center space-x-2">
-              <span>ChromaDB Vector RAG Explorer</span>
+              <span>AI Semantic Search Hub</span>
               <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-800 text-purple-400 font-mono">
-                Vector Store Active
+                Semantic Engine Active
               </span>
             </h3>
-            <p className="text-xs text-slate-400">Persistent Vector Database • 384-Dim Semantic Embeddings</p>
+            <p className="text-xs text-slate-400">Semantic Knowledge Index • Smart Vector Embedding Matching</p>
           </div>
         </div>
 
@@ -85,8 +85,10 @@ export const VectorSearchWidget: React.FC = () => {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {stats.collections.map((c) => (
             <div key={c.collection_name} className="bg-slate-950/80 border border-slate-800/80 rounded-xl p-2.5 text-xs">
-              <span className="text-[10px] text-slate-500 block truncate font-mono">{c.collection_name}</span>
-              <span className="text-sm font-extrabold text-indigo-300 mt-0.5 block">{c.document_count} Vectors</span>
+              <span className="text-[10px] text-slate-400 block truncate font-sans">
+                {c.collection_name === 'campusmate_knowledge' ? 'Career Knowledge' : c.collection_name === 'campusmate_resumes' ? 'Resume Index' : 'Job Database'}
+              </span>
+              <span className="text-sm font-extrabold text-indigo-300 mt-0.5 block">{c.document_count} Entries</span>
             </div>
           ))}
         </div>
@@ -101,7 +103,7 @@ export const VectorSearchWidget: React.FC = () => {
             value={queryText}
             onChange={(e) => setQueryText(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-            placeholder="Enter query to test semantic vector similarity..."
+            placeholder="Enter query to search semantic knowledge..."
             className="w-full bg-slate-900 border border-slate-800 rounded-xl pl-9 pr-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:border-indigo-500"
           />
         </div>
@@ -111,9 +113,9 @@ export const VectorSearchWidget: React.FC = () => {
           onChange={(e) => setCollection(e.target.value)}
           className="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
         >
-          <option value="campusmate_knowledge">campusmate_knowledge</option>
-          <option value="campusmate_resumes">campusmate_resumes</option>
-          <option value="campusmate_jobs">campusmate_jobs</option>
+          <option value="campusmate_knowledge">Career Knowledge Base</option>
+          <option value="campusmate_resumes">Resume Intelligence Index</option>
+          <option value="campusmate_jobs">Job Database Index</option>
         </select>
 
         <button
@@ -122,7 +124,7 @@ export const VectorSearchWidget: React.FC = () => {
           className="px-4 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl text-xs font-bold shadow-md flex items-center justify-center space-x-1.5 transition-all disabled:opacity-50"
         >
           {loading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
-          <span>Vector Search</span>
+          <span>Search Knowledge</span>
         </button>
       </div>
 
@@ -133,8 +135,8 @@ export const VectorSearchWidget: React.FC = () => {
       {/* Vector Results List */}
       <div className="space-y-3">
         <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
-          <span>Vector Search Matches ({results.length}):</span>
-          <span className="text-[10px] text-slate-500 font-mono">Ranked by Cosine Similarity</span>
+          <span>Search Matches ({results.length}):</span>
+          <span className="text-[10px] text-slate-500 font-sans">Ranked by Match Similarity</span>
         </h4>
 
         {results.length > 0 ? (

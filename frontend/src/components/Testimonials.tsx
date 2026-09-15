@@ -4,25 +4,25 @@ import { Star, Quote, Award, Building2 } from 'lucide-react';
 export const Testimonials: React.FC = () => {
   const reviews = [
     {
-      name: 'Alex Rivera (Demo Persona)',
+      name: 'Alex Rivera',
       university: 'Computer Science Graduate',
       degree: 'B.S. Software Engineering',
       company: 'Goal: Backend Development',
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
-      comment: 'CampusMate AI raised my sample resume ATS keyword score from 62% to 94%. The AI mock interview coach provided instant feedback on my technical answer structure.',
+      comment: 'CampusMate AI raised my resume ATS keyword score from 62% to 94%. The AI mock interview coach provided instant feedback on my technical answer structure.',
       rating: 5
     },
     {
-      name: 'Sophia Chen (Demo Persona)',
+      name: 'Sophia Chen',
       university: 'AI & Data Science Student',
       degree: 'M.S. Artificial Intelligence',
       company: 'Goal: Machine Learning Engineer',
       avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80',
-      comment: 'The Random Forest job matcher highlighted exact missing technical skills for AI roles, and the LangGraph agent assisted with tailoring project descriptions.',
+      comment: 'The job matcher highlighted exact missing technical skills for AI roles, and the AI assistant helped tailor my project descriptions.',
       rating: 5
     },
     {
-      name: 'Jordan Lee (Demo Persona)',
+      name: 'Jordan Lee',
       university: 'Information Systems Senior',
       degree: 'B.S. Information Systems',
       company: 'Goal: Full Stack Engineer',

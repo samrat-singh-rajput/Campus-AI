@@ -112,7 +112,7 @@ export const JobsView: React.FC<JobsViewProps> = ({ user: _user, onBackToDashboa
         <div className="flex items-center space-x-2">
           <span className="bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider flex items-center space-x-1.5">
             <BrainCircuit className="w-3.5 h-3.5" />
-            <span>Scikit-Learn Random Forest Engine</span>
+            <span>AI Match Engine</span>
           </span>
         </div>
       </div>
@@ -122,12 +122,12 @@ export const JobsView: React.FC<JobsViewProps> = ({ user: _user, onBackToDashboa
         <div>
           <h2 className="text-xl font-extrabold text-white flex items-center space-x-2">
             <span>Job Matches & Eligibility Classifier</span>
-            <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-800 text-indigo-400 font-mono">
-              Random Forest ML
+            <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-800 text-indigo-400 font-sans">
+              AI Match Engine
             </span>
           </h2>
           <p className="text-xs text-slate-400 mt-1">
-            Random Forest model evaluates candidate skill vector, degree fit, and ATS resume score.
+            AI Engine evaluates candidate skills, degree fit, and ATS resume compatibility score.
           </p>
         </div>
 
@@ -182,7 +182,7 @@ export const JobsView: React.FC<JobsViewProps> = ({ user: _user, onBackToDashboa
       {loading ? (
         <div className="py-16 text-center space-y-3">
           <RefreshCw className="w-8 h-8 animate-spin text-indigo-400 mx-auto" />
-          <p className="text-xs text-slate-400 font-semibold">Running Random Forest ML Candidate Evaluation...</p>
+          <p className="text-xs text-slate-400 font-semibold">Running Candidate Job Evaluation...</p>
         </div>
       ) : (
         <div className="space-y-4">
@@ -252,7 +252,7 @@ export const JobsView: React.FC<JobsViewProps> = ({ user: _user, onBackToDashboa
                     <span className={`text-xs px-3.5 py-1 rounded-full font-extrabold border ${getScoreBadgeColor(score)}`}>
                       {score}% Probability • {classification}
                     </span>
-                    <p className="text-[10px] text-slate-500 mt-1 font-mono hidden md:block">Scikit-Learn Model Output</p>
+                    <p className="text-[10px] text-slate-500 mt-1 font-sans hidden md:block">AI Matcher Output</p>
                   </div>
 
                   <div className="flex items-center space-x-2">
@@ -304,8 +304,8 @@ export const JobsView: React.FC<JobsViewProps> = ({ user: _user, onBackToDashboa
             </button>
 
             <div>
-              <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 font-mono">
-                RandomForestClassifier Inference
+              <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 font-sans">
+                AI Fit Analysis
               </span>
               <h3 className="text-xl font-extrabold text-white mt-1">{selectedJobEval.job_title}</h3>
               <p className="text-xs text-slate-400">{selectedJobEval.company}</p>

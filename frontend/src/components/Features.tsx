@@ -10,7 +10,7 @@ export const Features: React.FC = () => {
       bgGlow: 'bg-blue-500/10',
       title: 'Smart Resume Parser & ATS Optimizer',
       description: 'Extract skills, education, and experience from PDF resumes instantly. Get an objective ATS score with specific missing keyword alerts to bypass recruiters\' automated filters.',
-      badge: 'PyPDF Parser'
+      badge: 'ATS Analyzer'
     },
     {
       icon: Target,
@@ -18,8 +18,8 @@ export const Features: React.FC = () => {
       accent: 'text-indigo-400',
       bgGlow: 'bg-indigo-500/10',
       title: 'AI Job Matcher & Eligibility Engine',
-      description: 'Powered by a Scikit-Learn Random Forest ML model. Evaluates candidate skill vectors against real job descriptions to provide eligibility probabilities and skill gap breakdown.',
-      badge: 'Random Forest ML'
+      description: 'Evaluates candidate skill profiles against real job descriptions to provide eligibility probabilities and skill gap breakdown.',
+      badge: 'Match Engine'
     },
     {
       icon: Mic,
@@ -44,9 +44,9 @@ export const Features: React.FC = () => {
       color: 'from-amber-500 to-orange-600',
       accent: 'text-amber-400',
       bgGlow: 'bg-amber-500/10',
-      title: 'LangGraph Autonomous AI Agent',
-      description: 'Multi-tool agent powered by LangGraph & ChromaDB vector RAG. Ask complex career questions, receive salary benchmarks, and generate tailored cover letters on demand.',
-      badge: 'LangGraph Agent'
+      title: 'Autonomous AI Career Agent',
+      description: 'Multi-tool agent powered by semantic RAG search. Ask complex career questions, receive salary benchmarks, and generate tailored cover letters on demand.',
+      badge: 'AI Career Agent'
     },
     {
       icon: Database,
@@ -54,8 +54,8 @@ export const Features: React.FC = () => {
       accent: 'text-cyan-400',
       bgGlow: 'bg-cyan-500/10',
       title: 'Secure Student Data Vault',
-      description: 'Your career data is protected with JWT token authentication, bcrypt password encryption, MongoDB Atlas primary storage, and local persistent ChromaDB embeddings.',
-      badge: 'JWT & Bcrypt'
+      description: 'Your career data is protected with enterprise-grade token encryption, secure password hashing, and encrypted persistent storage.',
+      badge: 'Secure Vault'
     }
   ];
 
@@ -73,7 +73,7 @@ export const Features: React.FC = () => {
             Everything You Need to Land Your <span className="gradient-text">Dream Career</span>
           </h2>
           <p className="text-base sm:text-lg text-slate-400 leading-relaxed font-normal">
-            CampusMate AI combines machine learning, vector RAG search, and autonomous AI agents to give every student an unfair advantage in placement drives.
+            CampusMate AI combines machine learning, vector search, and autonomous AI agents to give every student an edge in placement drives.
           </p>
         </div>
 

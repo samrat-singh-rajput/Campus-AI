@@ -11,49 +11,49 @@ interface PlaceholderViewProps {
 
 const STEP_DETAILS: Record<string, { title: string; subtitle: string; targetStep: string; features: string[] }> = {
   assistant: {
-    title: 'LangGraph Autonomous AI Agent',
-    subtitle: 'Multi-tool agent powered by LangGraph, ChromaDB vector store, and LLM APIs.',
-    targetStep: 'STEP 9 — LangGraph AI Agent Orchestration',
+    title: 'Autonomous AI Career Agent',
+    subtitle: 'Multi-tool agent powered by semantic RAG search and AI career guidance.',
+    targetStep: 'AI Career Assistant',
     features: [
-      'Interactive chat interface with career vector search',
+      'Interactive chat interface with career knowledge search',
       'Custom tools for salary benchmarking & cover letter creation',
-      'Persistent conversation context & RAG document grounding'
+      'Persistent conversation context & document grounding'
     ]
   },
   resume: {
     title: 'Smart Resume Parsing & Upload Service',
     subtitle: 'Upload PDF resumes to extract structured skills, work history, and ATS optimization score.',
-    targetStep: 'STEP 5 — Resume Parsing & Upload Service',
+    targetStep: 'Resume Analysis Engine',
     features: [
-      'PyPDF text extraction & metadata parser',
+      'PDF text extraction & metadata parser',
       'ATS score & missing keyword identifier',
-      'MongoDB Atlas resume document store integration'
+      'Secure cloud storage integration'
     ]
   },
   jobs: {
     title: 'Job Matches & Eligibility Classifier',
-    subtitle: 'Scikit-Learn Random Forest model calculating candidate job match percentages.',
-    targetStep: 'STEP 7 & 8 — ML Job Recommendation & Eligibility Engine',
+    subtitle: 'Machine learning model calculating candidate job match percentages.',
+    targetStep: 'Job Match Engine',
     features: [
-      'Random Forest ML feature extraction & scoring',
-      'Job database CRUD & filtering engine',
+      'Machine learning feature extraction & scoring',
+      'Job database searching & filtering engine',
       'Detailed skill gap breakdown & candidate probability score'
     ]
   },
   applications: {
     title: 'Application Kanban Pipeline Tracker',
     subtitle: 'Drag-and-drop visual application tracking board for all your campus drives.',
-    targetStep: 'STEP 11 — Application Kanban Tracker',
+    targetStep: 'Application Pipeline',
     features: [
       'Drag-and-drop columns: Saved, Applied, Interviewing, Offered',
       'Application deadline reminders & status updates',
-      'MongoDB Atlas persistence for all tracked jobs'
+      'Cloud data persistence for all tracked jobs'
     ]
   },
   interview: {
     title: 'AI Mock Interview Coach',
     subtitle: 'Interactive real-time voice & text interview coach with AI feedback.',
-    targetStep: 'STEP 10 — AI Mock Interview Coach',
+    targetStep: 'Mock Interview Coach',
     features: [
       'Speech-to-Text & Text-to-Speech audio integration',
       'Role-specific behavioral & technical question bank',
@@ -63,7 +63,7 @@ const STEP_DETAILS: Record<string, { title: string; subtitle: string; targetStep
   insights: {
     title: 'AI Career Analytics & Trend Insights',
     subtitle: 'Comprehensive market trend data, skill gap analysis, and placement statistics.',
-    targetStep: 'STEP 12 — User Profile & Settings',
+    targetStep: 'Analytics & Insights Hub',
     features: [
       'Skill trajectory & market demand insights',
       'Historical interview performance metrics',
@@ -73,11 +73,11 @@ const STEP_DETAILS: Record<string, { title: string; subtitle: string; targetStep
   settings: {
     title: 'Account Profile & Preferences',
     subtitle: 'Manage your authenticated user profile, security settings, and university details.',
-    targetStep: 'STEP 12 — User Profile & Settings',
+    targetStep: 'Account Settings',
     features: [
       'Edit user name, college, degree, and skills list',
-      'Manage JWT security tokens & password reset',
-      'MongoDB Atlas profile synchronization'
+      'Manage security tokens & account preferences',
+      'Cloud profile synchronization'
     ]
   }
 };

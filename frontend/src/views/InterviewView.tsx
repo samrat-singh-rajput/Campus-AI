@@ -31,7 +31,7 @@ interface InterviewViewProps {
 
 const DOMAINS = [
   { id: 'Full Stack Engineering', title: 'Full Stack Engineering', desc: 'React, FastAPI, REST APIs, Security & Databases' },
-  { id: 'AI & Machine Learning', title: 'AI & Machine Learning', desc: 'RAG, Vector DBs, Random Forest & Neural Nets' },
+  { id: 'AI & Machine Learning', title: 'AI & Machine Learning', desc: 'RAG, Machine Learning & Neural Networks' },
   { id: 'Backend Engineering', title: 'Backend Engineering', desc: 'Python Asyncio, System Concurrency & Scalability' }
 ];
 

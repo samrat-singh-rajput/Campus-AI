@@ -125,7 +125,7 @@ export const ResumeView: React.FC<ResumeViewProps> = ({ user: _user, onBackToDas
         <div className="flex items-center space-x-2">
           <span className="bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider flex items-center space-x-1.5">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>PyPDF ATS Parser</span>
+            <span>Smart ATS Resume Analyzer</span>
           </span>
         </div>
       </div>
@@ -189,7 +189,7 @@ export const ResumeView: React.FC<ResumeViewProps> = ({ user: _user, onBackToDas
                     {uploading ? 'Parsing PDF & Extracting Skills...' : 'Click to Upload or Drag & Drop PDF'}
                   </p>
                   <p className="text-xs text-slate-400 mt-1">
-                    PyPDF extracts contact info, technical skills, and calculates ATS compatibility score
+                    Smart parser extracts contact info, technical skills, and calculates ATS compatibility score
                   </p>
                 </div>
 
@@ -226,12 +226,12 @@ export const ResumeView: React.FC<ResumeViewProps> = ({ user: _user, onBackToDas
             )}
           </div>
 
-          {/* Parsed Skill Vector taxonomy */}
+          {/* Parsed Skill taxonomy */}
           {resume && (
             <div className="glass-card rounded-3xl p-6 border border-slate-800">
               <h4 className="text-sm font-bold text-white mb-4 flex items-center space-x-2">
                 <Sparkles className="w-4 h-4 text-indigo-400" />
-                <span>Extracted Technical Skills Vector ({resume.parsed_data.extracted_skills.length})</span>
+                <span>Extracted Technical Skills ({resume.parsed_data.extracted_skills.length})</span>
               </h4>
 
               {Object.keys(resume.parsed_data.skill_categories).length > 0 ? (
